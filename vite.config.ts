@@ -59,33 +59,16 @@ export default defineConfig(({ mode }) => {
                 registerType: 'autoUpdate',
                 injectRegister: 'auto',
 
-                includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'masked-icon.svg'],
+                pwaAssets: {
+                    disabled: false,
+                    config: true
+                },
 
                 manifest: {
-                    name: 'albero',
-                    short_name: 'albero',
-                    description: 'albero',
-                    theme_color: '#ffffff',
-                    background_color: '#ffffff',
-                    display: 'standalone',
-                    icons: [
-                        {
-                            src: '/pwa-192x192.png',
-                            sizes: '192x192',
-                            type: 'image/png'
-                        },
-                        {
-                            src: '/pwa-512x512.png',
-                            sizes: '512x512',
-                            type: 'image/png'
-                        },
-                        {
-                            src: '/pwa-512x512.png',
-                            sizes: '512x512',
-                            type: 'image/png',
-                            purpose: 'any maskable'
-                        }
-                    ]
+                    name: 'vite-project',
+                    short_name: 'vite-project',
+                    description: 'vite-project',
+                    theme_color: '#ffffff'
                 },
 
                 workbox: {
@@ -95,8 +78,10 @@ export default defineConfig(({ mode }) => {
                 },
 
                 devOptions: {
-                    enabled: true, // only for dev preview
-                    navigateFallback: 'index.html'
+                    enabled: false,
+                    navigateFallback: 'index.html',
+                    suppressWarnings: true,
+                    type: 'module'
                 }
             })
         ],
@@ -119,8 +104,7 @@ export default defineConfig(({ mode }) => {
         },
         resolve: {
             alias: {
-                '@': path.resolve(__dirname, 'src'),
-                '@shared': path.resolve(__dirname, 'src/shared')
+                '@': path.resolve(__dirname, 'src')
             }
         },
         server: config,
