@@ -1,7 +1,23 @@
+import './App.css'
+import { Routes, Route } from 'react-router-dom'
+
+// Components
+import { Navbar } from './components/ui/navbar'
+
+// Pages
+import Home from './pages/user/Home'
+
 export default function App() {
     return (
-        <div className="min-h-screen flex justify-center items-center bg-gray-200">
-            <h1 className="text-4xl text-blue-900 font-bold">Welcome to Albero</h1>
+        <div className="">
+            <Navbar />
+
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Home />}
+                />
+            </Routes>
         </div>
     )
 }
