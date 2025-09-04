@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet'
+
 const SEO = ({ title = '', description = '', url = '', image = '', type = '', canonical = '' }) => {
     return (
         <Helmet>
