@@ -5,7 +5,7 @@ import Logo from '../../assets/images/logo.png'
 import { Link } from 'react-router-dom'
 
 const AnimatedNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-    const defaultTextColor = 'text-gray-300'
+    const defaultTextColor = 'text-white'
     const hoverTextColor = 'text-white'
     const textSizeClass = 'text-sm'
 
@@ -45,7 +45,7 @@ const Navbar = () => {
             <div
                 className="sticky flex items-center justify-between 
           w-full max-w-3xl px-6 py-3 rounded-full z-10
-          border-white/30 bg-white/10 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_8px_4px_rgba(255,255,255,0.4)]">
+          border-white/30 bg-black/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_8px_4px_rgba(255,255,255,0.4)]">
                 {/* Logo */}
                 <div className="flex items-center">
                     <Link to="/">
