@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import Logo from '../../assets/images/logo.png'
@@ -22,36 +22,60 @@ const AnimatedNavLink = ({ href, children }: { href: string; children: React.Rea
 }
 
 const Navbar = () => {
+    const [scrolled, setScrolled] = useState(false)
+
     const [isOpen, setIsOpen] = useState(false)
     const [isHovered, setIsHovered] = useState(false)
     const [isPressed, setIsPressed] = useState(false)
 
     const toggleMenu = () => setIsOpen(!isOpen)
 
+    useEffect(() => {
+        const onScroll = () => setScrolled(window.scrollY > 0)
+        window.addEventListener('scroll', onScroll)
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
     return (
-        <div className="flex bg-black justify-center w-full py-6 px-4 relative">
+        <div
+            className={`${
+                scrolled ? 'fixed bg-transparent' : 'absolute bg-transparent'
+            } top-0 left-0 z-50 w-full flex justify-center py-6 px-4 transition-all duration-500`}>
             {/* Navbar Container with Glass Effect */}
             <div
-                className="flex items-center justify-between 
-          w-full max-w-3xl px-6 py-3 rounded-full relative z-10
+                className="sticky flex items-center justify-between 
+          w-full max-w-3xl px-6 py-3 rounded-full z-10
           border-white/30 bg-white/10 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_8px_4px_rgba(255,255,255,0.4)]">
                 {/* Logo */}
                 <div className="flex items-center">
                     <Link to="/">
                         <motion.div
-                            className="w-10 h-10 mr-6 cursor-pointer"
-                            initial={{ scale: 0.9 }}
-                            whileHover={{
-                                scale: 1.15,
-                                rotate: -10
-                            }}
-                            whileTap={{ scale: 0.9 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 15 }}>
-                            <img
+                            className="relative flex items-center cursor-pointer"
+                            initial="rest"
+                            whileHover="hover"
+                            animate="rest">
+                            {/* Logo */}
+                            <motion.img
                                 src={Logo}
                                 alt="Albero Logo"
-                                className="w-full h-full object-contain transition-all duration-500"
+                                className="w-10 h-10 object-contain"
+                                variants={{
+                                    rest: { scale: 1 },
+                                    hover: { scale: 1.15, rotate: -5 }
+                                }}
+                                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                             />
+
+                            {/* Text Reveal (absolute so it doesn’t push links) */}
+                            <motion.span
+                                className="absolute left-10 text-xl font-semibold tracking-widest text-white whitespace-nowrap"
+                                variants={{
+                                    rest: { opacity: 0, x: -20 },
+                                    hover: { opacity: 1, x: 0 }
+                                }}
+                                transition={{ duration: 0.4, ease: 'easeInOut' }}>
+                                lbero
+                            </motion.span>
                         </motion.div>
                     </Link>
                 </div>

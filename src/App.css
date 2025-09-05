@@ -1,3 +1,22 @@
 * {
     box-sizing: border-box;
+    font-family: Archivo, sans-serif;
+}
+
+/* Tanker */
+@font-face {
+    font-family: Tanker;
+    src: url('./assets/fonts/Tanker/Fonts/OTF/Tanker-Regular.otf') format('opentype');
+}
+
+/* Archivo */
+@font-face {
+    font-family: Archivo;
+    src: url('./assets/fonts/Archivo/Fonts/OTF/Archivo-Regular.otf') format('opentype');
+}
+
+/* ClashDisplay */
+@font-face {
+    font-family: ClashDisplay;
+    src: url('./assets/fonts/ClashDisplay/Fonts/OTF/ClashDisplay-Regular.otf') format('opentype');
 }

@@ -4,11 +4,10 @@ export default function Home() {
     return (
         <div>
             <Hero
-                title="Build smarter tools for modern teams"
-                subtitle="Streamline your workflow and boost productivity with intuitive solutions. Security, speed, and simplicity—all in one platform."
+                title="Smarter Development • Faster Launch • Better Growth"
+                subtitle="We help startups, SMEs, and enterprises grow digitally with tailored web solutions."
                 eyebrow="Next-Gen Productivity"
                 ctaLabel="Get Started"
-                ctaHref="#"
             />
         </div>
     )
