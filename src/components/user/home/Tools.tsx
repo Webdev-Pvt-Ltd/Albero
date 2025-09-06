@@ -178,10 +178,13 @@ export default function LogoCloudDemoPage() {
                             speedOnHover={20}
                             speed={40}
                             gap={112}
-                            fadeWidth={80} // Ширина затухания по краям
-                        >
+                            fadeWidth={80}>
                             {LOGOS.map((logo) => (
-                                <div className="mx-auto w-fit dark:invert">{logo.icon}</div>
+                                <div
+                                    className="mx-auto w-fit invert hover:text-blue-500 hover:scale-110 transition-transform duration-200"
+                                    title={logo.iconName}>
+                                    {logo.icon}
+                                </div>
                             ))}
                         </BlurredInfiniteSlider>
                     </div>

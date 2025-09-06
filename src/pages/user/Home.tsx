@@ -1,5 +1,9 @@
-import { Hero } from '@/components/ui/hero'
+import Stats from '@/components/user/home/Stats'
+import { Hero } from '@/components/user/home/Hero'
+import Services from '@/components/user/home/Services'
 import Tools from '@/components/user/home/Tools'
+import { Feature1 } from '@/components/user/home/Features'
+import Process from '@/components/user/home/Process'
 
 export default function Home() {
     return (
@@ -11,6 +15,10 @@ export default function Home() {
                 ctaLabel="Get Started"
             />
             <Tools />
+            <Stats />
+            <Services />
+            <Feature1 />
+            <Process />
         </div>
     )
 }
