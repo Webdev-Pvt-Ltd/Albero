@@ -77,9 +77,10 @@ jobs:
 
             - name: Build the application
               run: npm run build
-              # env:
-              #     PORT: ${{ secrets.PORT }}
-              #     VITE_ENV: ${{ vars.VITE_ENV }}
+              env:
+                  PORT: ${{ secrets.PORT }}
+                  BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
+                  VITE_ENV: ${{ vars.VITE_ENV }}
 
             - name: Upload build artifacts
               uses: actions/upload-artifact@v4
