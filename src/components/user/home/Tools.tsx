@@ -1,5 +1,3 @@
-'use client'
-
 import { animate, motion, useMotionValue } from 'motion/react'
 import React, { useEffect, useState, type CSSProperties } from 'react'
 import useMeasure from 'react-use-measure'

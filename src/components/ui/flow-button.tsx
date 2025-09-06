@@ -1,4 +1,3 @@
-'use client'
 import { ArrowRight } from 'lucide-react'
 
 export function FlowButton({ text = 'Modern Button' }: { text?: string }) {
