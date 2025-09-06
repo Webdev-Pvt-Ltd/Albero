@@ -21,8 +21,8 @@ export default function Process() {
                     className="mb-6 text-white">
                     Our Process
                 </Badge>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white/70">How We Bring Your Vision to Life</h2>
-                <p className="text-lg text-white/50 max-w-2xl mx-auto">Our proven 5-step process ensures quality delivery and client satisfaction.</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">How We Bring Your Vision to Life</h2>
+                <p className="text-lg text-white max-w-2xl mx-auto">Our proven 5-step process ensures quality delivery and client satisfaction.</p>
             </div>
             <FeatureCarousel image={images} />
         </div>

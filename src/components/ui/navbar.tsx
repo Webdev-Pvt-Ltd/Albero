@@ -89,11 +89,7 @@ const Navbar = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.3 }}
                             whileHover={{ scale: 1.05 }}>
-                            <a
-                                href="#"
-                                className="text-sm text-white hover:text-gray-200 transition-colors font-medium">
-                                <AnimatedNavLink href={`#${item.toLowerCase()}`}>{item}</AnimatedNavLink>
-                            </a>
+                            <AnimatedNavLink href={`#${item.toLowerCase()}`}>{item}</AnimatedNavLink>
                         </motion.div>
                     ))}
                 </nav>

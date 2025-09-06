@@ -4,6 +4,7 @@ import Services from '@/components/user/home/Services'
 import Tools from '@/components/user/home/Tools'
 import { Feature1 } from '@/components/user/home/Features'
 import Process from '@/components/user/home/Process'
+import Pricing from '@/components/user/home/Pricing'
 
 export default function Home() {
     return (
@@ -19,6 +20,7 @@ export default function Home() {
             <Services />
             <Feature1 />
             <Process />
+            <Pricing />
         </div>
     )
 }

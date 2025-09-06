@@ -39,18 +39,16 @@ export function Hero({ eyebrow = 'Innovate Without Limits', title, subtitle, cta
 
                 {/* Eyebrow */}
                 {eyebrow && (
-                    <a
-                        href="#"
-                        className="group">
+                    <div className="group">
                         <span
                             className="text-sm text-gray-400 font-geist mx-auto px-5 py-2 
             bg-gradient-to-tr from-zinc-300/5 via-gray-400/5 to-transparent  
             border-[2px] border-white/5 
             rounded-3xl w-fit tracking-tight uppercase flex items-center justify-center">
-                            <FlipLink href="">{eyebrow}</FlipLink>
+                            <FlipLink href="#">{eyebrow}</FlipLink>
                             <ChevronRight className="inline w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                         </span>
-                    </a>
+                    </div>
                 )}
 
                 {/* Title */}
@@ -87,9 +85,9 @@ export function Hero({ eyebrow = 'Innovate Without Limits', title, subtitle, cta
                                     cy="12"
                                     cx="12"></circle>
                                 <path
-                                    stroke-linejoin="round"
-                                    stroke-linecap="round"
-                                    stroke-width="2"
+                                    strokeLinejoin="round"
+                                    strokeLinecap="round"
+                                    strokeWidth="2"
                                     stroke="black"
                                     d="M7.5 16.5L16.5 7.5M16.5 7.5H10.5M16.5 7.5V13.5"></path>
                             </svg>
