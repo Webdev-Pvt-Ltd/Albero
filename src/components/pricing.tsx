@@ -39,12 +39,13 @@ interface Plan {
 
 interface PricingSectionProps extends React.ComponentProps<'div'> {
     plans: Plan[]
+    frequency: FREQUENCY
+    setFrequency: React.Dispatch<React.SetStateAction<FREQUENCY>>
+    currency: CURRENCY
+    setCurrency: React.Dispatch<React.SetStateAction<CURRENCY>>
 }
 
-export function PricingSection({ plans, ...props }: PricingSectionProps) {
-    const [frequency, setFrequency] = React.useState<'monthly' | 'yearly'>('monthly')
-    const [currency, setCurrency] = React.useState<CURRENCY>('USD')
-
+export function PricingSection({ plans, frequency, setFrequency, currency, setCurrency, ...props }: PricingSectionProps) {
     return (
         <div
             className={cn('flex w-full flex-col items-center justify-center space-y-5 p-4', props.className)}

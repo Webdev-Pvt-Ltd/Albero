@@ -1,5 +1,7 @@
 import { PricingSection } from '@/components/pricing'
 import { Badge } from '@/components/ui/badge'
+import { AddOnServices } from './AddOnServices'
+import React from 'react'
 
 const PLANS = [
     {
@@ -102,6 +104,9 @@ const PLANS = [
 ]
 
 export default function Pricing() {
+    const [frequency, setFrequency] = React.useState<'monthly' | 'yearly'>('monthly')
+    const [currency, setCurrency] = React.useState<'USD' | 'EUR' | 'INR'>('USD')
+
     return (
         <div className="w-full overflow-hidden bg-black py-12 md:py-20">
             <div className="text-center mb-16">
@@ -117,7 +122,16 @@ export default function Pricing() {
             </div>
 
             {/* Pricing Plans */}
-            <PricingSection plans={PLANS} />
+            <PricingSection
+                plans={PLANS}
+                frequency={frequency}
+                setFrequency={setFrequency}
+                currency={currency}
+                setCurrency={setCurrency}
+            />
+
+            {/* Add-On Services */}
+            <AddOnServices currency={currency} />
         </div>
     )
 }

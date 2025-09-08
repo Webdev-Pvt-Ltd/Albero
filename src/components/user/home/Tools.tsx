@@ -162,7 +162,7 @@ const LOGOS = [
 
 export default function LogoCloudDemoPage() {
     return (
-        <section className="w-[100vw] bg-black overflow-hidden py-16">
+        <section className="w-full bg-black overflow-hidden py-16">
             <div className="m-auto max-w-7xl md:px-5">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="flex-shrink-0 text-center md:text-right md:max-w-44 md:border-r md:border-gray-200 dark:md:border-gray-800 md:pr-6">
