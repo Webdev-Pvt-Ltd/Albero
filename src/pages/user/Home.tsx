@@ -7,6 +7,7 @@ import Process from '@/components/user/home/Process'
 import Pricing from '@/components/user/home/Pricing'
 import WhyChooseUs from '@/components/user/home/WhyChooseUs'
 import Testimonials from '@/components/user/home/Testimonials'
+import { Contact } from '@/components/user/home/Contact'
 
 export default function Home() {
     return (
@@ -25,6 +26,7 @@ export default function Home() {
             <Pricing />
             <Testimonials />
             <WhyChooseUs />
+            <Contact />
         </div>
     )
 }
