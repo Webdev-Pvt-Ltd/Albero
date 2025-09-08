@@ -1,4 +1,4 @@
-import { FeatureCarousel } from '@/components/animated-feature-carousel'
+import { FeatureCarousel } from '@/components/ui/animated-feature-carousel'
 import { Badge } from '@/components/ui/badge'
 
 export default function Process() {

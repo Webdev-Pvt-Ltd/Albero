@@ -87,7 +87,7 @@ export default function WhyChooseUs() {
                             <div className="absolute inset-0 bg-[#262626]"></div>
                             <span className="font-semibold text-lg text-white relative z-10">Our Company</span>
                             <div className="absolute top-2 right-2">
-                                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                             </div>
                         </div>
                         <div className="p-6 text-center">
@@ -208,18 +208,18 @@ export default function WhyChooseUs() {
                         <h3 className="text-xl font-bold text-white mb-3">Ready to experience the difference?</h3>
                         <p className="text-gray-400 mb-4">Join hundreds of satisfied clients who've chosen our premium services</p>
 
-                        <button className="relative inline-block font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl shadow-yellow-900 transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-yellow-600 hover:outline-white/30 hover:outline-1">
-                            <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-yellow-500 via-cyan-500 to-sky-600 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                        <button className="relative inline-block font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl shadow-emerald-900 transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-emerald-600 hover:outline-white/30 hover:outline-1">
+                            <span className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-600 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
                             <span className="relative z-10 block px-4 py-2 rounded-2xl bg-neutral-950">
                                 <div className="relative z-10 flex items-center space-x-3">
-                                    <span className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-yellow-300">
+                                    <span className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300">
                                         Get Started Today
                                     </span>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"
                                         fill="currentColor"
-                                        className="w-7 h-7 transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-yellow-300">
+                                        className="w-7 h-7 transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300">
                                         <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
                                     </svg>
                                 </div>

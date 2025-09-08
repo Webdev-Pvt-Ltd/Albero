@@ -6,6 +6,7 @@ import { Features } from '@/components/user/home/Features'
 import Process from '@/components/user/home/Process'
 import Pricing from '@/components/user/home/Pricing'
 import WhyChooseUs from '@/components/user/home/WhyChooseUs'
+import Testimonials from '@/components/user/home/Testimonials'
 
 export default function Home() {
     return (
@@ -22,6 +23,7 @@ export default function Home() {
             <Features />
             <Process />
             <Pricing />
+            <Testimonials />
             <WhyChooseUs />
         </div>
     )
