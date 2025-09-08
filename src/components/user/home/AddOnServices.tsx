@@ -62,7 +62,7 @@ interface AddOnServicesProps {
 
 export function AddOnServices({ currency }: AddOnServicesProps) {
     return (
-        <div className="w-full max-w-7xl mx-auto mt-16">
+        <div className="w-full max-w-7xl mx-auto mt-16 px-5">
             <h2 className="text-2xl font-bold text-center text-white mb-8">Add-On Services</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {SERVICES.map((service, idx) => (

@@ -5,6 +5,7 @@ import Tools from '@/components/user/home/Tools'
 import { Features } from '@/components/user/home/Features'
 import Process from '@/components/user/home/Process'
 import Pricing from '@/components/user/home/Pricing'
+import WhyChooseUs from '@/components/user/home/WhyChooseUs'
 
 export default function Home() {
     return (
@@ -21,6 +22,7 @@ export default function Home() {
             <Features />
             <Process />
             <Pricing />
+            <WhyChooseUs />
         </div>
     )
 }
