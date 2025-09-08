@@ -7,6 +7,7 @@ import Loader from './components/common/Loader'
 import NotFound from './components/common/NotFound'
 import { Navbar } from './components/ui/navbar'
 import OfflinePage from './components/common/OfflinePage'
+import Footer from './components/animated-footer'
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/user/Home'))
@@ -33,7 +34,9 @@ export default function App() {
 
     return (
         <div>
+            {/* <Navbar /> */}
             <Navbar />
+
             <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route
@@ -46,6 +49,23 @@ export default function App() {
                     />
                 </Routes>
             </Suspense>
+
+            {/* Footer */}
+            <Footer
+                leftLinks={[
+                    { href: '/terms', label: 'Terms & policies' },
+                    { href: '/privacy-policy', label: 'Privacy policy' }
+                ]}
+                rightLinks={[
+                    { href: '/about', label: 'About' },
+                    { href: '/services', label: 'Services' },
+                    { href: '/contact', label: 'Contact' },
+                    { href: 'https://www.instagram.com/taher_max_', label: 'Instagram' },
+                    { href: 'https://github.com/tahermaxse', label: 'Facebook' }
+                ]}
+                copyrightText="Albero 2025. All Rights Reserved"
+                barCount={20}
+            />
         </div>
     )
 }
