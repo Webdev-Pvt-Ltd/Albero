@@ -1,9 +1,9 @@
 import { Badge } from '@/components/ui/badge'
-import { FeaturesSectionWithHoverEffects } from '@/components/ui/feature'
+import { ServicesSection } from '@/components/ui/feature'
 
 export default function Services() {
     return (
-        <div className="bg-black text-white py-12 md:py-18">
+        <div className="bg-black text-white px-5 py-12 md:py-18">
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
@@ -16,7 +16,7 @@ export default function Services() {
                 </p>
             </div>
 
-            <FeaturesSectionWithHoverEffects />
+            <ServicesSection />
         </div>
     )
 }

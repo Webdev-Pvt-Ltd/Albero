@@ -162,11 +162,9 @@ const LOGOS = [
 
 export default function LogoCloudDemoPage() {
     return (
-        <section className="bg-black overflow-hidden py-16 w-full">
-            <div className="m-auto max-w-7xl px-6">
-                {/* Эта структура отвечает за адаптивную верстку */}
+        <section className="w-[100vw] bg-black overflow-hidden py-16">
+            <div className="m-auto max-w-7xl md:px-5">
                 <div className="flex flex-col items-center md:flex-row">
-                    {/* На экранах 'md' и шире этот блок будет слева с линией */}
                     <div className="flex-shrink-0 text-center md:text-right md:max-w-44 md:border-r md:border-gray-200 dark:md:border-gray-800 md:pr-6">
                         <p className="text-sm text-gray-600 dark:text-gray-400">Empowering Business Through Technology</p>
                     </div>

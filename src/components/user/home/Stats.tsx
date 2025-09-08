@@ -14,7 +14,7 @@ const STATS: Stat[] = [
 
 export default function Stats() {
     return (
-        <section className="bg-black py-12 md:py-20">
+        <section className="bg-black px-5 py-12 md:py-20">
             <div className="max-w-4xl mx-auto text-center">
                 <Badge
                     variant="outline"

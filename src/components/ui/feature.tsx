@@ -10,7 +10,7 @@ import {
     IconEyeSearch
 } from '@tabler/icons-react'
 
-export function FeaturesSectionWithHoverEffects() {
+export function ServicesSection() {
     const features = [
         {
             title: 'HTML/JS Development',

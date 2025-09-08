@@ -232,7 +232,7 @@ function FeatureCard({ children, step }: { children: React.ReactNode; step: numb
             onMouseMove={handleMouseMove}
             style={{ '--x': useMotionTemplate`${mouseX}px`, '--y': useMotionTemplate`${mouseY}px` } as WrapperStyle}>
             <div className="relative w-full overflow-hidden rounded-3xl border transition-colors duration-300 border-neutral-800 bg-neutral-900">
-                <div className="m-10 min-h-[450px] w-full">
+                <div className="p-10 md:min-h-[570px] min-h-[450px] w-full">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={step}
@@ -292,7 +292,7 @@ function StepsNav({ steps: stepItems, current, onChange }: { steps: readonly Ste
                             <button
                                 type="button"
                                 className={cn(
-                                    'group flex items-center gap-2.5 rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 focus-visible:ring-offset-black',
+                                    'group flex items-center gap-2.5 rounded-full px-3 py-1.5 text-sm font-medium transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-500 focus-visible:ring-offset-black',
                                     isCurrent ? 'text-white bg-blue-500' : 'bg-neutral-800 text-neutral-300 hover:bg-neutral-700'
                                 )}
                                 onClick={() => onChange(stepIdx)}>
@@ -319,13 +319,13 @@ function StepsNav({ steps: stepItems, current, onChange }: { steps: readonly Ste
 
 const defaultClasses = {
     img: 'rounded-xl border border-neutral-200 border-neutral-800 shadow-2xl shadow-black/10 shadow-neutral-950/50',
-    step1img1: 'w-[50%] left-0 top-[15%]',
-    step1img2: 'w-[60%] left-[40%] top-[35%]',
-    step2img1: 'w-[50%] left-[5%] top-[20%]',
-    step2img2: 'w-[40%] left-[55%] top-[45%]',
-    step3img: 'w-[90%] left-[5%] top-[25%]',
-    step4img: 'w-[90%] left-[5%] top-[25%]',
-    step5img: 'w-[90%] left-[5%] top-[25%]'
+    step1img1: 'w-[50%] md:w-[90%] left-0 md:left-0 top-5',
+    step1img2: 'w-[60%] md:hidden left-20 md:left-30 top-20',
+    step2img1: 'w-[60%] md:hidden md:w-[50%] left-20 md:left-0 top-20',
+    step2img2: 'w-[50%] md:w-[90%] left-0 md:0 top-5 md:top-5',
+    step3img: 'w-[80%] md:w-[90%] left-0 top-5',
+    step4img: 'w-[80%] md:w-[90%] left-0 top-5',
+    step5img: 'w-[80%] md:w-[90%] left-0 top-5'
 } as const
 
 export function FeatureCarousel({
@@ -410,7 +410,7 @@ export function FeatureCarousel({
         }
     }
     return (
-        <div className="flex flex-col gap-12 w-full max-w-4xl mx-auto p-4">
+        <div className="flex flex-col gap-12 w-full max-w-4xl mx-auto">
             <FeatureCard
                 {...props}
                 step={step}>

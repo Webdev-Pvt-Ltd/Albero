@@ -59,7 +59,7 @@ export function PricingSection({ plans, ...props }: PricingSectionProps) {
                     setCurrency={setCurrency}
                 />
             </div>
-            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {plans.map((plan) => (
                     <PricingCard
                         plan={plan}

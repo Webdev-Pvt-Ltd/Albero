@@ -2,7 +2,7 @@ import Stats from '@/components/user/home/Stats'
 import { Hero } from '@/components/user/home/Hero'
 import Services from '@/components/user/home/Services'
 import Tools from '@/components/user/home/Tools'
-import { Feature1 } from '@/components/user/home/Features'
+import { Features } from '@/components/user/home/Features'
 import Process from '@/components/user/home/Process'
 import Pricing from '@/components/user/home/Pricing'
 
@@ -18,7 +18,7 @@ export default function Home() {
             <Tools />
             <Stats />
             <Services />
-            <Feature1 />
+            <Features />
             <Process />
             <Pricing />
         </div>

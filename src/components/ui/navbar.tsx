@@ -40,7 +40,7 @@ const Navbar = () => {
         <div
             className={`${
                 scrolled ? 'fixed bg-transparent' : 'absolute bg-transparent'
-            } top-0 left-0 z-50 w-full flex justify-center py-6 px-4 transition-all duration-500`}>
+            } z-50 w-full flex justify-center py-6 px-4 transition-all duration-500`}>
             {/* Navbar Container with Glass Effect */}
             <div
                 className="sticky flex items-center justify-between 

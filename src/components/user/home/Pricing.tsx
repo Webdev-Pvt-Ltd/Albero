@@ -103,7 +103,7 @@ const PLANS = [
 
 export default function Pricing() {
     return (
-        <div className="bg-black py-12 md:py-20">
+        <div className="w-full overflow-hidden bg-black py-12 md:py-20">
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
@@ -111,7 +111,7 @@ export default function Pricing() {
                     Pricing
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Transparent, Affordable Pricing</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-white">
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-white px-5">
                     Choose the perfect plan for your project. All prices include design, development, and initial support.
                 </p>
             </div>
