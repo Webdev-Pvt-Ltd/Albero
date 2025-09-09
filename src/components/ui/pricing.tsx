@@ -3,8 +3,40 @@ import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { CheckCircleIcon, StarIcon } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
+
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+        const targetId = href.replace('#', '')
+
+        if (location.pathname !== '/') {
+            // Navigate to home, then scroll after load
+            navigate('/', { state: { scrollTo: targetId } })
+        } else {
+            // Already on home → scroll directly with offset
+            const section = document.getElementById(targetId)
+            if (section) {
+                const yOffset = -60 // 👈 adjust this to your navbar height
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+                window.scrollTo({ top: y, behavior: 'smooth' })
+            }
+        }
+    }
+
+    return (
+        <a
+            href={href}
+            onClick={handleClick}>
+            {children}
+        </a>
+    )
+}
 
 // Currency setup
 type CURRENCY = 'USD' | 'EUR' | 'INR'
@@ -27,7 +59,6 @@ interface Plan {
     }[]
     btn: {
         text: string
-        href: string
     }
     highlighted?: boolean
 }
@@ -160,12 +191,14 @@ export function PricingCard({ plan, className, currency = 'USD', ...props }: Pri
                 ))}
             </div>
             <div className="mt-auto w-full border-t border-white/10/10 p-3">
-                <Button
-                    className={`w-full ${plan.highlighted ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-[#262626]'}`}
-                    variant={plan.highlighted ? 'default' : 'outline'}
-                    asChild>
-                    <Link to={plan.btn.href}>{plan.btn.text}</Link>
-                </Button>
+                <NavLink href="#contact">
+                    <Button
+                        className={`w-full ${plan.highlighted ? 'bg-white text-black font-semibold hover:bg-gray-200' : 'bg-black text-white hover:bg-[#262626]'}`}
+                        variant={plan.highlighted ? 'default' : 'outline'}
+                        asChild>
+                        <span>{plan.btn.text}</span>
+                    </Button>
+                </NavLink>
             </div>
         </div>
     )

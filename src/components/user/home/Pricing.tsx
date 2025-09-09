@@ -20,7 +20,6 @@ const PLANS = [
         ],
         btn: {
             text: 'Contact Us',
-            href: '/contact',
             variant: 'outline'
         }
     },
@@ -41,7 +40,6 @@ const PLANS = [
         ],
         btn: {
             text: 'Contact Us',
-            href: '/contact',
             variant: 'secondary'
         }
     },
@@ -62,7 +60,6 @@ const PLANS = [
         ],
         btn: {
             text: 'Get Premium Quote',
-            href: '/contact',
             variant: 'default'
         },
         highlighted: true
@@ -85,7 +82,6 @@ const PLANS = [
         ],
         btn: {
             text: 'Contact Enterprise Team',
-            href: '/contact',
             variant: 'destructive'
         }
     }
