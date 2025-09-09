@@ -23,7 +23,7 @@ export default function App() {
         if (location.state?.scrollTo) {
             const section = document.getElementById(location.state.scrollTo)
             if (section) {
-                const yOffset = -80 // same offset as above
+                const yOffset = -60 // same offset as above
                 const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
                 window.scrollTo({ top: y, behavior: 'smooth' })
             }

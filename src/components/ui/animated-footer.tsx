@@ -29,7 +29,7 @@ const NavLink = ({ href, children }: { href: string; children: React.ReactNode }
             // Already on home → scroll directly with offset
             const section = document.getElementById(targetId)
             if (section) {
-                const yOffset = -80 // 👈 adjust this to your navbar height
+                const yOffset = -60 // 👈 adjust this to your navbar height
                 const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
 
                 window.scrollTo({ top: y, behavior: 'smooth' })
