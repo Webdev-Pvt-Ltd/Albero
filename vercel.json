@@ -1,0 +1,20 @@
+{
+    "redirects": [
+        {
+            "source": "/(.*)",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "albero.in"
+                }
+            ],
+            "destination": "https://www.albero.in/:1",
+            "permanent": true
+        },
+        {
+            "source": "/(.*)",
+            "destination": "https://www.albero.in/:1",
+            "permanent": true
+        }
+    ]
+}

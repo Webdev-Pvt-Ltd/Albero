@@ -3,17 +3,17 @@ import { Suspense, lazy, useEffect, useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 
 // Components
-import Loader from './components/common/Loader'
-import NotFound from './components/common/NotFound'
+import Loader from './components/user/common/Loader'
+import NotFound from './components/user/common/NotFound'
 import { Navbar } from './components/ui/navbar'
-import OfflinePage from './components/common/OfflinePage'
+import OfflinePage from './components/user/common/OfflinePage'
 import Footer from './components/ui/animated-footer'
-import BackToTopButton from './components/common/BackToTopButton'
+import BackToTopButton from './components/user/common/BackToTopButton'
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/user/Home'))
-const RefundPolicy = lazy(() => import('./components/user/common/RefundPolicy'))
-const TermsAndPolicies = lazy(() => import('./components/user/common/TermsAndPolicies'))
+const RefundPolicy = lazy(() => import('./pages/user/Refund'))
+const TermsAndPolicies = lazy(() => import('./pages/user/Terms'))
 
 export default function App() {
     const [isOnline, setIsOnline] = useState(navigator.onLine)
@@ -50,22 +50,22 @@ export default function App() {
     return (
         <div>
             {/* <Navbar /> */}
-            <Navbar />
-            <BackToTopButton />
-
             <Suspense fallback={<Loader />}>
+                <Navbar />
+                <BackToTopButton />
+
                 <Routes>
                     <Route
                         path="/"
                         element={<Home />}
                     />
                     <Route
-                        path="/refund"
+                        path="/refund-policy"
                         element={<RefundPolicy />}
                     />
 
                     <Route
-                        path="/terms"
+                        path="/terms-and-policies"
                         element={<TermsAndPolicies />}
                     />
                     <Route
@@ -73,24 +73,24 @@ export default function App() {
                         element={<NotFound />}
                     />
                 </Routes>
-            </Suspense>
 
-            {/* Footer */}
-            <Footer
-                leftLinks={[
-                    { href: '/terms', label: 'Terms & policies' },
-                    { href: '/refund', label: 'Refund policy' }
-                ]}
-                rightLinks={[
-                    { href: '#about', label: 'About' },
-                    { href: '#services', label: 'Services' },
-                    { href: '#contact', label: 'Contact' },
-                    { href: 'https://www.instagram.com/taher_max_', label: 'Instagram' },
-                    { href: 'https://github.com/tahermaxse', label: 'Facebook' }
-                ]}
-                copyrightText="Albero 2025. All Rights Reserved"
-                barCount={20}
-            />
+                {/* Footer */}
+                <Footer
+                    leftLinks={[
+                        { href: '/terms-and-policies', label: 'Terms & policies' },
+                        { href: '/refund-policy', label: 'Refund policy' }
+                    ]}
+                    rightLinks={[
+                        { href: '#about', label: 'About' },
+                        { href: '#services', label: 'Services' },
+                        { href: '#contact', label: 'Contact' },
+                        { href: 'https://www.instagram.com/taher_max_', label: 'Instagram' },
+                        { href: 'https://github.com/tahermaxse', label: 'Facebook' }
+                    ]}
+                    copyrightText="Albero 2025. All Rights Reserved"
+                    barCount={20}
+                />
+            </Suspense>
         </div>
     )
 }

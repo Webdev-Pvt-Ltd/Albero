@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import { FlowButton } from '../ui/flow-button'
-import { Glitchy404 } from '../ui/glitchy-404-1'
+import { FlowButton } from '../../ui/flow-button'
+import { Glitchy404 } from '../../ui/glitchy-404-1'
 
 function NotFound() {
     return (

@@ -20,8 +20,8 @@ export default function Stats() {
             <div className="max-w-4xl mx-auto text-center">
                 <Badge
                     variant="outline"
-                    className="mb-6 text-white">
-                    About Our Agency
+                    className="mb-6 text-white text-xl">
+                    About Us
                 </Badge>
                 <h2 className="text-3xl md:text-4xl text-white font-bold mb-6">Empowering Businesses with Digital Transformation</h2>
                 <p className="text-lg text-white/70 mb-8">

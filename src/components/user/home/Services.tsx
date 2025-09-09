@@ -9,7 +9,7 @@ export default function Services() {
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
-                    className="mb-6">
+                    className="mb-6 text-white text-xl">
                     Our Services
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">Comprehensive Web Development Solutions</h2>

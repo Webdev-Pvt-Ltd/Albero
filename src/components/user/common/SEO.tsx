@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet'
 
-const SEO = ({ title = '', description = '', url = '', image = '', type = '', canonical = '' }) => {
+const SEO = ({ title = '', description = '', url = '', image = '', type = '', canonical = '', keywords = '' }) => {
     return (
         <Helmet>
             {/* Primary Meta Tags */}
@@ -8,6 +8,10 @@ const SEO = ({ title = '', description = '', url = '', image = '', type = '', ca
             <meta
                 name="description"
                 content={description}
+            />
+            <meta
+                name="keywords"
+                content={keywords}
             />
             <link
                 rel="canonical"

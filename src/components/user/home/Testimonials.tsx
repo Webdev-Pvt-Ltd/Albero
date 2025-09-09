@@ -69,7 +69,7 @@ export default function Testimonials() {
                 <div className="text-center mb-16">
                     <Badge
                         variant="outline"
-                        className="mb-6 text-white">
+                        className="mb-6 text-white text-xl">
                         Testimonials
                     </Badge>
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">What Our Clients Say</h2>

@@ -1,4 +1,4 @@
-const TermsAndPolicies = () => {
+const Terms = () => {
     return (
         <div className="min-h-screen flex items-center bg-black text-gray-200 px-6 md:px-20 py-32">
             <div className="max-w-4xl mx-auto">
@@ -37,4 +37,4 @@ const TermsAndPolicies = () => {
     )
 }
 
-export default TermsAndPolicies
+export default Terms

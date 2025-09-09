@@ -61,7 +61,7 @@ export default function WhyChooseUs() {
                     viewport={{ once: true }}>
                     <Badge
                         variant="outline"
-                        className="mb-6 text-white">
+                        className="mb-6 text-white text-xl">
                         Why Choose Us
                     </Badge>
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Your Success is Our Priority</h2>

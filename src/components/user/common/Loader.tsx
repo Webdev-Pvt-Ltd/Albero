@@ -1,5 +1,5 @@
-import { Spinner } from '../ui/luma-spin'
-import Logo from '../../assets/images/common/loading.png'
+import { Spinner } from '../../ui/luma-spin'
+import Logo from '../../../assets/images/common/loading.png'
 
 export default function Loader() {
     return (

@@ -18,7 +18,7 @@ export default function Process() {
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
-                    className="mb-6 text-white">
+                    className="mb-6 text-white text-xl">
                     Our Process
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">How We Bring Your Vision to Life</h2>

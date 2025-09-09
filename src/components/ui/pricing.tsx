@@ -6,12 +6,10 @@ import { CheckCircleIcon, StarIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
-type FREQUENCY = 'monthly' | 'yearly'
+// Currency setup
 type CURRENCY = 'USD' | 'EUR' | 'INR'
-const frequencies: FREQUENCY[] = ['monthly', 'yearly']
 const currencies: CURRENCY[] = ['USD', 'EUR', 'INR']
 
-// Currency conversion rates (example rates - you might want to fetch these from an API)
 const currencyRates: Record<CURRENCY, number> = {
     USD: 1,
     EUR: 0.85,
@@ -22,10 +20,7 @@ interface Plan {
     name: string
     info: string
     tag?: string
-    price: {
-        monthly: number
-        yearly: number
-    }
+    price: number // single price instead of monthly/yearly
     features: {
         text: string
         tooltip?: string
@@ -39,65 +34,31 @@ interface Plan {
 
 interface PricingSectionProps extends React.ComponentProps<'div'> {
     plans: Plan[]
-    frequency: FREQUENCY
-    setFrequency: React.Dispatch<React.SetStateAction<FREQUENCY>>
     currency: CURRENCY
     setCurrency: React.Dispatch<React.SetStateAction<CURRENCY>>
 }
 
-export function PricingSection({ plans, frequency, setFrequency, currency, setCurrency, ...props }: PricingSectionProps) {
+export function PricingSection({ plans, currency, setCurrency, ...props }: PricingSectionProps) {
     return (
         <div
             className={cn('flex w-full flex-col items-center justify-center space-y-5 p-4', props.className)}
             {...props}>
-            <div className="flex flex-col md:flex-row gap-4 items-center">
-                <PricingFrequencyToggle
-                    frequency={frequency}
-                    setFrequency={setFrequency}
-                />
-                <CurrencySelector
-                    currency={currency}
-                    setCurrency={setCurrency}
-                />
-            </div>
+            {/* Currency Toggle Only */}
+            <CurrencySelector
+                currency={currency}
+                setCurrency={setCurrency}
+            />
+
+            {/* Pricing Cards */}
             <div className="mx-auto grid w-full max-w-7xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {plans.map((plan) => (
                     <PricingCard
-                        plan={plan}
                         key={plan.name}
-                        frequency={frequency}
+                        plan={plan}
                         currency={currency}
                     />
                 ))}
             </div>
-        </div>
-    )
-}
-
-type PricingFrequencyToggleProps = React.ComponentProps<'div'> & {
-    frequency: FREQUENCY
-    setFrequency: React.Dispatch<React.SetStateAction<FREQUENCY>>
-}
-
-export function PricingFrequencyToggle({ frequency, setFrequency, ...props }: PricingFrequencyToggleProps) {
-    return (
-        <div
-            className={cn('bg-[#262626] mx-auto flex w-fit rounded-full border border-white/10 p-1', props.className)}
-            {...props}>
-            {frequencies.map((freq) => (
-                <button
-                    onClick={() => setFrequency(freq)}
-                    className="relative px-4 py-1 text-sm capitalize">
-                    <span className="text-white relative z-10">{freq}</span>
-                    {frequency === freq && (
-                        <motion.span
-                            layoutId="frequency"
-                            transition={{ type: 'spring', duration: 0.4 }}
-                            className="bg-white absolute inset-0 z-10 rounded-full mix-blend-difference"
-                        />
-                    )}
-                </button>
-            ))}
         </div>
     )
 }
@@ -114,6 +75,7 @@ export function CurrencySelector({ currency, setCurrency, ...props }: CurrencySe
             {...props}>
             {currencies.map((curr) => (
                 <button
+                    key={curr}
                     onClick={() => setCurrency(curr)}
                     className="relative px-4 py-1 text-sm uppercase">
                     <span className="text-white relative z-10">{curr}</span>
@@ -132,19 +94,16 @@ export function CurrencySelector({ currency, setCurrency, ...props }: CurrencySe
 
 type PricingCardProps = React.ComponentProps<'div'> & {
     plan: Plan
-    frequency?: FREQUENCY
     currency?: CURRENCY
 }
 
-export function PricingCard({ plan, className, frequency = frequencies[0], currency = 'USD', ...props }: PricingCardProps) {
-    // Convert price based on selected currency
-    const convertedPrice = plan.price[frequency] * currencyRates[currency]
+export function PricingCard({ plan, className, currency = 'USD', ...props }: PricingCardProps) {
+    const convertedPrice = plan.price * currencyRates[currency]
 
-    // Format price based on currency
     const formatPrice = (price: number, currency: CURRENCY) => {
         return new Intl.NumberFormat('en-US', {
             style: 'currency',
-            currency: currency,
+            currency,
             minimumFractionDigits: currency === 'USD' || currency === 'EUR' ? 2 : 0,
             maximumFractionDigits: currency === 'INR' ? 0 : 2
         }).format(price)
@@ -152,7 +111,6 @@ export function PricingCard({ plan, className, frequency = frequencies[0], curre
 
     return (
         <div
-            key={plan.name}
             className={cn('relative flex w-full flex-col rounded-lg border border-white/10', className)}
             {...props}>
             {plan.highlighted && (
@@ -163,17 +121,12 @@ export function PricingCard({ plan, className, frequency = frequencies[0], curre
                     size={100}
                 />
             )}
-            <div className={cn('bg-[#262626] rounded-t-lg border-b border-white/10 p-4', plan.highlighted && 'bg-[#262626]')}>
+            <div className="bg-[#262626] rounded-t-lg border-b border-white/10 p-4">
                 <div className="absolute top-2 right-2 z-10 flex items-center gap-2">
                     {plan.highlighted && (
                         <p className="bg-white flex items-center gap-1 rounded-md border border-white/10 px-2 py-0.5 text-xs">
                             <StarIcon className="h-3 w-3 fill-current" />
                             Popular
-                        </p>
-                    )}
-                    {frequency === 'yearly' && (
-                        <p className="bg-[#161616] text-white flex items-center gap-1 rounded-md border border-white/10 px-2 py-0.5 text-xs">
-                            {Math.round(((plan.price.monthly * 12 - plan.price.yearly) / plan.price.monthly / 12) * 100)}% off
                         </p>
                     )}
                 </div>
@@ -183,10 +136,9 @@ export function PricingCard({ plan, className, frequency = frequencies[0], curre
                 <p className="text-white text-sm font-normal">{plan.info}</p>
                 <h3 className="mt-2 flex items-end gap-1">
                     <span className="text-3xl font-bold text-white">{formatPrice(convertedPrice, currency)}</span>
-                    <span className="text-white">{plan.name !== 'Free' ? '/' + (frequency === 'monthly' ? 'month' : 'year') : ''}</span>
                 </h3>
             </div>
-            <div className={cn('text-white space-y-4 px-4 py-6 text-sm', plan.highlighted && 'bg-muted/40')}>
+            <div className="text-white space-y-4 px-4 py-6 text-sm">
                 {plan.features.map((feature, index) => (
                     <div
                         key={index}
@@ -207,7 +159,7 @@ export function PricingCard({ plan, className, frequency = frequencies[0], curre
                     </div>
                 ))}
             </div>
-            <div className={cn('mt-auto w-full border-t border-white/10/10 p-3', plan.highlighted && 'bg-[#262626]')}>
+            <div className="mt-auto w-full border-t border-white/10/10 p-3">
                 <Button
                     className={`w-full ${plan.highlighted ? 'bg-white text-black hover:bg-gray-200' : 'bg-black text-white hover:bg-[#262626]'}`}
                     variant={plan.highlighted ? 'default' : 'outline'}
@@ -219,6 +171,7 @@ export function PricingCard({ plan, className, frequency = frequencies[0], curre
     )
 }
 
+// Same BorderTrail as before
 type BorderTrailProps = {
     className?: string
     size?: number
@@ -230,28 +183,15 @@ type BorderTrailProps = {
 }
 
 export function BorderTrail({ className, size = 60, transition, delay, onAnimationComplete, style }: BorderTrailProps) {
-    const BASE_TRANSITION = {
-        repeat: Infinity,
-        duration: 5,
-        ease: 'linear'
-    }
+    const BASE_TRANSITION = { repeat: Infinity, duration: 5, ease: 'linear' }
 
     return (
         <div className="pointer-events-none absolute inset-0 rounded-[inherit] border border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]">
             <motion.div
                 className={cn('absolute aspect-square bg-zinc-500', className)}
-                style={{
-                    width: size,
-                    offsetPath: `rect(0 auto auto 0 round ${size}px)`,
-                    ...style
-                }}
-                animate={{
-                    offsetDistance: ['0%', '100%']
-                }}
-                transition={{
-                    ...(transition ?? BASE_TRANSITION),
-                    delay: delay
-                }}
+                style={{ width: size, offsetPath: `rect(0 auto auto 0 round ${size}px)`, ...style }}
+                animate={{ offsetDistance: ['0%', '100%'] }}
+                transition={{ ...(transition ?? BASE_TRANSITION), delay }}
                 onAnimationComplete={onAnimationComplete}
             />
         </div>

@@ -35,7 +35,7 @@ export const Contact = () => {
                 <div className="text-center mb-16">
                     <Badge
                         variant="outline"
-                        className="mb-6">
+                        className="mb-6 text-white text-xl">
                         Contact Us
                     </Badge>
                     <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Build Your Website Today</h2>
@@ -92,11 +92,10 @@ export const Contact = () => {
                                         required
                                     />
                                 </div>
-                                <Button
-                                    type="submit"
-                                    className="w-full bg-[#262626] hover:bg-[#1f1f1f]">
+
+                                <button className="w-full text-zinc-200 hover:text-zinc-200 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(143,140,140,0.16)] to-transparent rounded-md py-2 px-6 shadow hover:shadow-zinc-400 duration-700">
                                     Send Message
-                                </Button>
+                                </button>
                             </form>
                         </Card>
                     </div>

@@ -8,10 +8,7 @@ const PLANS = [
         name: 'HTML/CSS',
         tag: 'Basic',
         info: 'Perfect for simple static websites',
-        price: {
-            monthly: 180,
-            yearly: 1500
-        },
+        price: 180,
         features: [
             { text: 'Up to 5 static pages (HTML, CSS, JS)' },
             { text: 'Fully responsive design' },
@@ -31,10 +28,7 @@ const PLANS = [
         name: 'WordPress',
         tag: 'Standard',
         info: 'Flexible CMS for blogs, business, and e-commerce',
-        price: {
-            monthly: 300,
-            yearly: 2500
-        },
+        price: 300,
         features: [
             { text: 'Custom WordPress theme design & setup' },
             { text: 'Up to 10 pages with CMS editing' },
@@ -55,10 +49,7 @@ const PLANS = [
         name: 'MERN Stack',
         tag: 'Most Popular',
         info: 'Best for startups & businesses scaling fast',
-        price: {
-            monthly: 1800,
-            yearly: 2450
-        },
+        price: 1800,
         features: [
             { text: 'Full-stack app with MongoDB, Express, React, Node.js' },
             { text: 'Dynamic pages with CMS or admin panel' },
@@ -80,10 +71,7 @@ const PLANS = [
         name: 'Laravel Advanced',
         tag: 'Enterprise',
         info: 'Enterprise-grade solution with PHP & Laravel',
-        price: {
-            monthly: 600,
-            yearly: 1800
-        },
+        price: 600,
         features: [
             { text: 'Custom Laravel backend with scalable architecture' },
             { text: 'Advanced e-commerce (multi-vendor, subscriptions)' },
@@ -104,7 +92,6 @@ const PLANS = [
 ]
 
 export default function Pricing() {
-    const [frequency, setFrequency] = React.useState<'monthly' | 'yearly'>('monthly')
     const [currency, setCurrency] = React.useState<'USD' | 'EUR' | 'INR'>('USD')
 
     return (
@@ -114,7 +101,7 @@ export default function Pricing() {
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
-                    className="mb-6 text-white">
+                    className="mb-6 text-white text-xl">
                     Pricing
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">Transparent, Affordable Pricing</h2>
@@ -126,8 +113,6 @@ export default function Pricing() {
             {/* Pricing Plans */}
             <PricingSection
                 plans={PLANS}
-                frequency={frequency}
-                setFrequency={setFrequency}
                 currency={currency}
                 setCurrency={setCurrency}
             />
