@@ -2,21 +2,73 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Menu, X } from 'lucide-react'
 import Logo from '../../assets/images/logo.png'
-import { Link } from 'react-router-dom'
+
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const AnimatedNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-    const defaultTextColor = 'text-white'
-    const hoverTextColor = 'text-white'
-    const textSizeClass = 'text-sm'
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+        const targetId = href.replace('#', '')
+
+        if (location.pathname !== '/') {
+            // Navigate to home, then scroll after load
+            navigate('/', { state: { scrollTo: targetId } })
+        } else {
+            // Already on home → scroll directly with offset
+            const section = document.getElementById(targetId)
+            if (section) {
+                const yOffset = -80 // 👈 adjust this to your navbar height
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+                window.scrollTo({ top: y, behavior: 'smooth' })
+            }
+        }
+    }
 
     return (
         <a
             href={href}
-            className={`group relative inline-block overflow-hidden h-5 items-center ${textSizeClass}`}>
+            onClick={handleClick}
+            className="group relative inline-block overflow-hidden h-5 items-center text-sm">
             <div className="flex flex-col transition-transform duration-500 ease-out transform group-hover:-translate-y-1/2">
-                <span className={defaultTextColor}>{children}</span>
-                <span className={hoverTextColor}>{children}</span>
+                <span className="text-white">{children}</span>
+                <span className="text-white">{children}</span>
             </div>
+        </a>
+    )
+}
+
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+        const targetId = href.replace('#', '')
+
+        if (location.pathname !== '/') {
+            // Navigate to home, then scroll after load
+            navigate('/', { state: { scrollTo: targetId } })
+        } else {
+            // Already on home → scroll directly with offset
+            const section = document.getElementById(targetId)
+            if (section) {
+                const yOffset = -80 // 👈 adjust this to your navbar height
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+                window.scrollTo({ top: y, behavior: 'smooth' })
+            }
+        }
+    }
+
+    return (
+        <a
+            href={href}
+            onClick={handleClick}>
+            {children}
         </a>
     )
 }
@@ -48,7 +100,7 @@ const Navbar = () => {
           border-white/30 bg-black/40 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.5),inset_0_-1px_0_rgba(255,255,255,0.1),inset_0_0_8px_4px_rgba(255,255,255,0.4)]">
                 {/* Logo */}
                 <div className="flex items-center">
-                    <Link to="/">
+                    <NavLink href="#home">
                         <motion.div
                             className="relative flex items-center cursor-pointer"
                             initial="rest"
@@ -77,7 +129,7 @@ const Navbar = () => {
                                 lbero
                             </motion.span>
                         </motion.div>
-                    </Link>
+                    </NavLink>
                 </div>
 
                 {/* Desktop Navigation */}
@@ -100,42 +152,44 @@ const Navbar = () => {
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.3, delay: 0.2 }}>
-                    <button
-                        className="group relative border-2 flex justify-center items-center gap-3 border-white/70 rounded-full w-[9.3rem] h-12 
+                    <NavLink href="#contact">
+                        <button
+                            className="group relative border-2 flex justify-center items-center gap-3 border-white/70 rounded-full w-[9.3rem] h-12 
                            transition-all duration-500 ease-out hover:border-white hover:shadow-lg hover:shadow-white/20 
                            hover:scale-105 active:scale-95 overflow-hidden backdrop-blur-sm
                            before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent 
                            before:via-white/5 before:to-transparent before:translate-x-[-100%] 
                            hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => {
-                            setIsHovered(false)
-                            setIsPressed(false)
-                        }}
-                        onMouseDown={() => setIsPressed(true)}
-                        onMouseUp={() => setIsPressed(false)}>
-                        {/* Glow */}
-                        <div
-                            className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-200/0 via-amber-200/10 to-amber-200/0 
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => {
+                                setIsHovered(false)
+                                setIsPressed(false)
+                            }}
+                            onMouseDown={() => setIsPressed(true)}
+                            onMouseUp={() => setIsPressed(false)}>
+                            {/* Glow */}
+                            <div
+                                className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-200/0 via-amber-200/10 to-amber-200/0 
                             opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-                        {/* Text */}
-                        <span
-                            className="text-white font-medium tracking-wide text-sm transition-all duration-300 
+                            {/* Text */}
+                            <span
+                                className="text-white font-medium tracking-wide text-sm transition-all duration-300 
                              group-hover:text-amber-50 relative z-10">
-                            Contact Us
-                        </span>
+                                Contact Us
+                            </span>
 
-                        {/* Dot + Ripple */}
-                        <span
-                            className={`relative z-10 w-4 h-4 bg-amber-200 rounded-full transition-all duration-500 ease-out
+                            {/* Dot + Ripple */}
+                            <span
+                                className={`relative z-10 w-4 h-4 bg-amber-200 rounded-full transition-all duration-500 ease-out
                                  ${isHovered ? 'bg-amber-300 shadow-lg shadow-amber-300/50 scale-110' : ''}
                                  ${isPressed ? 'scale-90' : ''}`}>
-                            <div
-                                className="absolute inset-0 rounded-full bg-amber-200 animate-ping opacity-0 group-hover:opacity-75"
-                                style={{ animationDuration: '2s' }}></div>
-                        </span>
-                    </button>
+                                <div
+                                    className="absolute inset-0 rounded-full bg-amber-200 animate-ping opacity-0 group-hover:opacity-75"
+                                    style={{ animationDuration: '2s' }}></div>
+                            </span>
+                        </button>
+                    </NavLink>
                 </motion.div>
 
                 {/* Mobile Menu Button */}
@@ -171,33 +225,36 @@ const Navbar = () => {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.1 + 0.1 }}
                                     exit={{ opacity: 0, x: 20 }}>
-                                    <a
-                                        href="#"
-                                        className="text-base text-white font-medium"
-                                        onClick={toggleMenu}>
-                                        {item}
-                                    </a>
+                                    <NavLink href={`#${item.toLowerCase()}`}>
+                                        <span
+                                            className="text-base text-white font-medium"
+                                            onClick={toggleMenu}>
+                                            {item}
+                                        </span>
+                                    </NavLink>
                                 </motion.div>
                             ))}
 
                             {/* Mobile CTA (same animated button) */}
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 }}
-                                exit={{ opacity: 0, y: 20 }}
-                                className="pt-6">
-                                <button
-                                    className="group relative border-2 flex justify-center items-center gap-3 border-white/70 rounded-full w-full h-12 
+                            <NavLink href="#contact">
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.5 }}
+                                    exit={{ opacity: 0, y: 20 }}
+                                    className="pt-6">
+                                    <button
+                                        className="group relative border-2 flex justify-center items-center gap-3 border-white/70 rounded-full w-full h-12 
                                        transition-all duration-500 ease-out hover:border-white hover:shadow-lg hover:shadow-white/20 
                                        hover:scale-105 active:scale-95 overflow-hidden backdrop-blur-sm
                                        before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent 
                                        before:via-white/5 before:to-transparent before:translate-x-[-100%] 
                                        hover:before:translate-x-[100%] before:transition-transform before:duration-700"
-                                    onClick={toggleMenu}>
-                                    <span className="text-white font-medium tracking-wide text-sm relative z-10">Contact Us</span>
-                                </button>
-                            </motion.div>
+                                        onClick={toggleMenu}>
+                                        <span className="text-white font-medium tracking-wide text-sm relative z-10">Contact Us</span>
+                                    </button>
+                                </motion.div>
+                            </NavLink>
                         </div>
                     </motion.div>
                 )}

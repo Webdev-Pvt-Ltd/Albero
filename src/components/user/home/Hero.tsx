@@ -1,5 +1,6 @@
 import { ChevronRight } from 'lucide-react'
 import FlipLink from '../../ui/text-effect-flipper'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface HeroProps {
     eyebrow?: string
@@ -8,11 +9,43 @@ interface HeroProps {
     ctaLabel?: string
 }
 
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    const handleClick = (e: React.MouseEvent) => {
+        e.preventDefault()
+        const targetId = href.replace('#', '')
+
+        if (location.pathname !== '/') {
+            // Navigate to home, then scroll after load
+            navigate('/', { state: { scrollTo: targetId } })
+        } else {
+            // Already on home → scroll directly with offset
+            const section = document.getElementById(targetId)
+            if (section) {
+                const yOffset = -80 // 👈 adjust this to your navbar height
+                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+                window.scrollTo({ top: y, behavior: 'smooth' })
+            }
+        }
+    }
+
+    return (
+        <a
+            href={href}
+            onClick={handleClick}>
+            {children}
+        </a>
+    )
+}
+
 export function Hero({ eyebrow = 'Innovate Without Limits', title, subtitle, ctaLabel }: HeroProps) {
     return (
         <div className="bg-black/80">
             <section
-                id="hero"
+                id="home"
                 className="relative mx-auto w-full pt-40 px-5 text-center md:px-8 
      lg:min-h-[calc(100vh)] overflow-hidden 
      bg-[linear-gradient(to_bottom,#000,#0000_30%,#898e8e_78%,#000000_99%_50%)] 
@@ -37,16 +70,18 @@ export function Hero({ eyebrow = 'Innovate Without Limits', title, subtitle, cta
 
                 {/* Eyebrow */}
                 {eyebrow && (
-                    <div className="group">
-                        <span
-                            className="text-sm text-gray-400 font-geist mx-auto px-5 py-2 
-            bg-gradient-to-tr from-zinc-300/5 via-gray-400/5 to-transparent  
+                    <NavLink href="#contact">
+                        <div className="group">
+                            <span
+                                className="text-sm text-gray-400 font-geist mx-auto px-5 py-2 
+                            bg-gradient-to-tr from-zinc-300/5 via-gray-400/5 to-transparent  
             border-[2px] border-white/5 
             rounded-3xl w-fit tracking-tight uppercase flex items-center justify-center">
-                            <FlipLink href="#">{eyebrow}</FlipLink>
-                            <ChevronRight className="inline w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-                        </span>
-                    </div>
+                                <FlipLink>{eyebrow}</FlipLink>
+                                <ChevronRight className="inline w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                            </span>
+                        </div>
+                    </NavLink>
                 )}
 
                 {/* Title */}
@@ -64,41 +99,39 @@ export function Hero({ eyebrow = 'Innovate Without Limits', title, subtitle, cta
 
                 {/* CTA */}
                 {ctaLabel && (
-                    <button className="cursor-pointer group relative bg-black hover:bg-zinc-300 text-white font-semibold text-sm px-6 py-3 rounded-full transition-all duration-200 ease-in-out shadow hover:shadow-lg w-40 h-12 hover:border-black border">
-                        <div className="relative flex items-center justify-center gap-2">
-                            <span className="relative inline-block overflow-hidden">
-                                <span className="block transition-transform duration-300 group-hover:-translate-y-full">{ctaLabel}</span>
-                                <span className="absolute inset-0 text-black transition-transform duration-300 translate-y-full group-hover:translate-y-0">
-                                    Right Now
+                    <NavLink href="#contact">
+                        <button className="cursor-pointer group relative bg-black hover:bg-zinc-300 text-white font-semibold text-sm px-6 py-3 rounded-full transition-all duration-200 ease-in-out shadow hover:shadow-lg w-40 h-12 hover:border-black border">
+                            <div className="relative flex items-center justify-center gap-2">
+                                <span className="relative inline-block overflow-hidden">
+                                    <span className="block transition-transform duration-300 group-hover:-translate-y-full">{ctaLabel}</span>
+                                    <span className="absolute inset-0 text-black transition-transform duration-300 translate-y-full group-hover:translate-y-0">
+                                        Right Now
+                                    </span>
                                 </span>
-                            </span>
 
-                            <svg
-                                className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45"
-                                viewBox="0 0 24 24">
-                                <circle
-                                    fill="currentColor"
-                                    stroke="#000"
-                                    r="11"
-                                    cy="12"
-                                    cx="12"></circle>
-                                <path
-                                    strokeLinejoin="round"
-                                    strokeLinecap="round"
-                                    strokeWidth="2"
-                                    stroke="black"
-                                    d="M7.5 16.5L16.5 7.5M16.5 7.5H10.5M16.5 7.5V13.5"></path>
-                            </svg>
-                        </div>
-                    </button>
+                                <svg
+                                    className="w-4 h-4 transition-transform duration-200 group-hover:rotate-45"
+                                    viewBox="0 0 24 24">
+                                    <circle
+                                        fill="currentColor"
+                                        stroke="#000"
+                                        r="11"
+                                        cy="12"
+                                        cx="12"></circle>
+                                    <path
+                                        strokeLinejoin="round"
+                                        strokeLinecap="round"
+                                        strokeWidth="2"
+                                        stroke="black"
+                                        d="M7.5 16.5L16.5 7.5M16.5 7.5H10.5M16.5 7.5V13.5"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </NavLink>
                 )}
 
                 {/* Bottom Fade */}
-                <div
-                    className="animate-fade-up relative mt-32 opacity-0 [perspective:2000px] 
-        after:absolute after:inset-0 after:z-50 
-        after:[background:linear-gradient(to_top,hsl(var(--background))_10%,transparent)]"
-                />
+                <div className="animate-fade-up relative mt-32 opacity-0 [perspective:2000px] after:absolute after:inset-0 after:z-50 after:[background:linear-gradient(to_top,hsl(var(--background))_10%,transparent)]" />
             </section>
         </div>
     )

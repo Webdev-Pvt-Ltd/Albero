@@ -146,14 +146,15 @@ export const Contact = () => {
                             </div>
                         </div>
 
-                        <Card className="p-6 bg-[#262626] text-primary-foreground">
-                            <h4 className="text-lg font-semibold mb-2">Free Consultation</h4>
-                            <p className="mb-4">Book a free 30-minute consultation to discuss your project requirements.</p>
-                            <Button
-                                variant="secondary"
-                                className="bg-white text-black hover:bg-gray-200">
-                                Schedule Call
-                            </Button>
+                        <Card className="p-6 bg-[#262626] text-primary-foreground rounded-2xl shadow-lg">
+                            <h4 className="text-xl font-bold mb-3 text-white">✨ Free Consultation</h4>
+                            <p className="text-gray-300 leading-relaxed mb-2">
+                                Have a project idea in mind or need expert guidance with your development? Enjoy a{' '}
+                                <span className="font-semibold text-white">free 30-minute consultation</span>
+                                with our team to discuss your <span className="italic">goals, challenges,</span>
+                                and the best way forward.
+                            </p>
+                            <div className="mt-3 text-sm text-gray-400">No obligations • 100% confidential • Expert advice</div>
                         </Card>
                     </div>
                 </div>

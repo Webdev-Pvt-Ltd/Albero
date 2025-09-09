@@ -6,16 +6,14 @@ const STAGGER = 0.025
 
 interface FlipLinkProps {
     children: string
-    href: string
 }
 
-const FlipLink: React.FC<FlipLinkProps> = ({ children, href }) => {
+const FlipLink: React.FC<FlipLinkProps> = ({ children }) => {
     return (
         <motion.a
             initial="initial"
             whileHover="hovered"
             target="_blank"
-            href={href || '#'}
             className="relative inline-block overflow-hidden"
             style={{
                 lineHeight: 0.85

@@ -3,7 +3,9 @@ import { ServicesSection } from '@/components/ui/feature'
 
 export default function Services() {
     return (
-        <div className="bg-black text-white px-5 py-12 md:py-18">
+        <section
+            id="services"
+            className="bg-black text-white px-5 py-12 md:py-18">
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
@@ -17,6 +19,6 @@ export default function Services() {
             </div>
 
             <ServicesSection />
-        </div>
+        </section>
     )
 }

@@ -108,7 +108,9 @@ export default function Pricing() {
     const [currency, setCurrency] = React.useState<'USD' | 'EUR' | 'INR'>('USD')
 
     return (
-        <div className="w-full overflow-hidden bg-black py-12 md:py-20">
+        <section
+            id="pricing"
+            className="w-full overflow-hidden bg-black py-12 md:py-20">
             <div className="text-center mb-16">
                 <Badge
                     variant="outline"
@@ -132,6 +134,6 @@ export default function Pricing() {
 
             {/* Add-On Services */}
             <AddOnServices currency={currency} />
-        </div>
+        </section>
     )
 }
