@@ -136,7 +136,7 @@ const Footer: React.FC<FooterProps> = ({ leftLinks, rightLinks, copyrightText, b
                             </li>
                         ))}
                     </ul>
-                    <div className="text-right mt-4">
+                    <div className="text-center md:text-right mt-4">
                         <button
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                             className="text-sm hover:underline inline-flex items-center">

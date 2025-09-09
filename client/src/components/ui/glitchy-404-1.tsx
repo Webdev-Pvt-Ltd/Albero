@@ -208,19 +208,17 @@ interface Glitchy404Props {
     color?: string
 }
 
-export function Glitchy404({ width = 860, height = 232, color = '#fff' }: Glitchy404Props) {
+export function Glitchy404({ color = '#fff' }: Glitchy404Props) {
     return (
         <FuzzyWrapper
             baseIntensity={0.4}
             className="cursor-pointer">
             <div className="relative">
                 <svg
-                    width={width}
-                    height={height}
                     viewBox="0 0 100 29"
                     fill="white"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="cursor-pointer fill-current text-white">
+                    className="md:w-[860px] md:h-[232px] cursor-pointer fill-current text-white">
                     {/* First "4" - Multiple chunks for variety */}
                     <motion.g
                         variants={getVariants(0)}

@@ -1,13 +1,13 @@
 import { Router } from 'express'
-import apiController from '../controller/apiController'
+import healthController from '../controller/healthController'
 import rateLimit from '../middleware/rateLimit'
 
 const router = Router()
 
 // This is the test error endpoint
-router.route('/self').get(apiController.self)
+router.route('/self').get(healthController.self)
 
 // Health check endpoint
-router.route('/health').get(rateLimit, apiController.health)
+router.route('/health').get(rateLimit, healthController.health)
 
 export default router

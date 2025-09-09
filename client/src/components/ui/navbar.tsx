@@ -82,6 +82,18 @@ const Navbar = () => {
 
     const toggleMenu = () => setIsOpen(!isOpen)
 
+    // Disable background scroll when mobile menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = ''
+        }
+        return () => {
+            document.body.style.overflow = ''
+        }
+    }, [isOpen])
+
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 0)
         window.addEventListener('scroll', onScroll)

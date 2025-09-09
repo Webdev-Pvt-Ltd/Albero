@@ -1,12 +1,15 @@
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react'
+import { Facebook, Instagram, Linkedin, Loader2, Mail, MapPin, Phone, Twitter } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { useState } from 'react'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
+import { useContactForm } from '@/hooks/user/useContactForm'
 
 export const Contact = () => {
+    const { submitForm, loading } = useContactForm()
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -14,17 +17,14 @@ export const Contact = () => {
         message: ''
     })
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        // console.log('Form submitted:', formData);
-        // Handle form submission
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        })
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+        await submitForm(formData)
+        setFormData({ name: '', email: '', phone: '', message: '' })
     }
 
     return (
@@ -94,7 +94,7 @@ export const Contact = () => {
                                 </div>
 
                                 <button className="w-full text-zinc-200 hover:text-zinc-200 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(143,140,140,0.16)] to-transparent rounded-md py-2 px-6 shadow hover:shadow-zinc-400 duration-700">
-                                    Send Message
+                                    {loading ? <Loader2 className="animate-spin mx-auto text-white" /> : 'Send Message'}
                                 </button>
                             </form>
                         </Card>

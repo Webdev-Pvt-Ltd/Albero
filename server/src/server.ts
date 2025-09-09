@@ -7,9 +7,10 @@ import job from './config/cron'
 
 const server = app.listen(config.PORT)
 
-if (config.ENV === 'production') job.start()
+if (config.ENV === 'production')
+    job.start()
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => {
     try {
         // Database connection (still useful if db.connect() returns Pool or client info)

@@ -30,9 +30,9 @@ const healthCheck = (): void => {
         })
 }
 
-// Run job every 8 minutes
+// Run job every 10 minutes
 const job = new CronJob(
-    '*/8 * * * *', // cron expression
+    '*/10 * * * *', // cron expression
     healthCheck, // onTick
     null, // onComplete
     true, // start immediately

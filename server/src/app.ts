@@ -1,6 +1,7 @@
 import express, { Application, NextFunction, Request, Response } from 'express'
 import path from 'path'
-import router from './router/apiRouter'
+import healthRouter from './router/healthRouter'
+import contactRouter from './router/contactRouter'
 import globalErrorHandler from './middleware/globalErrorHandler'
 import responseMessage from './constant/responseMessage'
 import httpError from './util/httpError'
@@ -23,7 +24,8 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, '../', 'public')))
 
 // Routes
-app.use('/api/v1', router)
+app.use('/api/v1', healthRouter)
+app.use('/api/v1', contactRouter)
 
 // 404 Handler
 app.use((req: Request, _: Response, next: NextFunction) => {

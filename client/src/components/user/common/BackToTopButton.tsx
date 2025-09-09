@@ -5,7 +5,7 @@ const BackToTopButton: React.FC = () => {
         <div className="fixed bottom-6 right-6 z-50">
             <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="group relative h-[55px] w-[55px] flex items-center justify-center gap-2 rounded-full bg-neutral-900 shadow-[0_0_15px_rgba(181,160,255,0.4)] transition-all duration-300 overflow-hidden cursor-pointer hover:w-[160px] hover:rounded-[50px] hover:bg-gradient-to-r hover:bg-[#262626]">
+                className="group relative h-[55px] w-[55px] flex items-center justify-center gap-2 rounded-full bg-neutral-900 shadow-[0_0_15px_rgba(181,160,255,0.4)] transition-all duration-300 overflow-hidden cursor-pointer hover:md:w-[160px] hover:rounded-[50px] hover:bg-gradient-to-r hover:bg-[#262626]">
                 {/* SVG Icon */}
                 <svg
                     className="h-4 w-4 text-white transition-transform duration-300 group-hover:scale-110"
@@ -25,7 +25,7 @@ const BackToTopButton: React.FC = () => {
                 </svg>
 
                 {/* Text on Hover */}
-                <span className="absolute opacity-0 translate-y-4 text-[0px] font-medium tracking-wide text-white transition-all duration-200 group-hover:static group-hover:opacity-100 group-hover:translate-y-0 group-hover:text-[14px]">
+                <span className="absolute opacity-0 translate-y-4 text-[0px] font-medium tracking-wide text-white transition-all duration-200 group-hover:md:static group-hover:md:opacity-100 group-hover:md:translate-y-0 group-hover:md:text-[14px]">
                     Back to Top
                 </span>
             </button>
