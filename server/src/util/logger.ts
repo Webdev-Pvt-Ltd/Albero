@@ -68,12 +68,16 @@ const fileLogFormat = format.printf((info) => {
         }
     }
 
-    return JSON.stringify({
-        level: level.toUpperCase(),
-        message,
-        timestamp,
-        meta: logMeta
-    }, null, 4)
+    return JSON.stringify(
+        {
+            level: level.toUpperCase(),
+            message,
+            timestamp,
+            meta: logMeta
+        },
+        null,
+        4
+    )
 })
 
 const FileTransport = (): Array<FileTransportInstance> => {

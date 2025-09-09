@@ -18,7 +18,7 @@ export default {
             client.release()
 
             // Parse URL for logging info
-            const dbUrl = new URL(config.DATABASE_URL as string)
+            const dbUrl = new URL(config.DATABASE_URL!)
 
             return {
                 pool,
