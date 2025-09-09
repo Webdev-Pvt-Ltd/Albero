@@ -1,4 +1,4 @@
-export const statsValues = [
+const statsValues = [
     { value: '5+', label: 'Years Experience' },
     { value: '200+', label: 'Projects Completed' },
     { value: '50+', label: 'Happy Clients' }

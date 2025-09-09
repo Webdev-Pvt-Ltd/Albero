@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, useEffect, useState, type MouseEvent } from 'react'
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, type MotionStyle, type MotionValue, type Variants } from 'framer-motion'
+import { processData } from '@/constants/process'
 
 // --- Helper Functions and Fallbacks ---
 
@@ -45,14 +46,10 @@ interface FeatureCarouselProps extends CardProps {
     image: ImageSet
 }
 
-interface StepImageProps {
-    src: StaticImageData
-    alt: string
-    className?: string
-    style?: React.CSSProperties
-    width?: number
-    height?: number
-}
+// --- Constants ---
+const TOTAL_STEPS = processData.totalSteps
+
+const steps = processData.steps
 
 interface Step {
     id: string
@@ -61,41 +58,14 @@ interface Step {
     description: string
 }
 
-// --- Constants ---
-const TOTAL_STEPS = 5
-
-const steps: readonly Step[] = [
-    {
-        id: '1',
-        name: 'Step 1',
-        title: 'Discovery & Strategy',
-        description: 'We analyze your requirements, target audience, and business goals to create a comprehensive project strategy.'
-    },
-    {
-        id: '2',
-        name: 'Step 2',
-        title: 'Design (UI/UX, Figma prototypes)',
-        description: 'Our designers create beautiful, user-friendly interfaces with detailed Figma prototypes for your approval.'
-    },
-    {
-        id: '3',
-        name: 'Step 3',
-        title: 'Development (Frontend + Backend)',
-        description: 'Our developers bring designs to life using modern technologies and best practices for optimal performance.'
-    },
-    {
-        id: '4',
-        name: 'Step 4',
-        title: 'Testing & QA (Performance, Security)',
-        description: 'Rigorous testing ensures your website is secure, fast, and works perfectly across all devices and browsers.'
-    },
-    {
-        id: '5',
-        name: 'Step 5',
-        title: 'Launch & Ongoing Support',
-        description: 'We deploy your website and provide continuous support, maintenance, and updates as needed.'
-    }
-]
+interface StepImageProps {
+    src: StaticImageData
+    alt: string
+    className?: string
+    style?: React.CSSProperties
+    width?: number
+    height?: number
+}
 
 const ANIMATION_PRESETS = {
     fadeInScale: {
@@ -317,16 +287,7 @@ function StepsNav({ steps: stepItems, current, onChange }: { steps: readonly Ste
     )
 }
 
-const defaultClasses = {
-    img: 'rounded-xl border border-neutral-200 border-neutral-800 shadow-2xl shadow-black/10 shadow-neutral-950/50',
-    step1img1: 'w-[50%] md:w-[90%] left-0 md:left-0 top-5',
-    step1img2: 'w-[60%] md:hidden left-20 md:left-30 top-20',
-    step2img1: 'w-[60%] md:hidden md:w-[50%] left-20 md:left-0 top-20',
-    step2img2: 'w-[50%] md:w-[90%] left-0 md:0 top-5 md:top-5',
-    step3img: 'w-[80%] md:w-[90%] left-0 top-5',
-    step4img: 'w-[80%] md:w-[90%] left-0 top-5',
-    step5img: 'w-[80%] md:w-[90%] left-0 top-5'
-} as const
+const defaultClasses = processData.defaultClasses
 
 export function FeatureCarousel({
     image,

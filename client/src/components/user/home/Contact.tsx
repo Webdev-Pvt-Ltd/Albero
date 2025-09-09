@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
 import { useContactForm } from '@/hooks/user/useContactForm'
+import { contactData } from '@/constants/contact'
 
 export const Contact = () => {
     const { submitForm, loading } = useContactForm()
@@ -36,18 +37,16 @@ export const Contact = () => {
                     <Badge
                         variant="outline"
                         className="mb-6 text-white text-xl">
-                        Contact Us
+                        {contactData.badgeTitle}
                     </Badge>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Build Your Website Today</h2>
-                    <p className="text-lg text-white max-w-2xl mx-auto">
-                        Ready to start your project? Get in touch with us for a free consultation and quote.
-                    </p>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">{contactData.title}</h2>
+                    <p className="text-lg text-white max-w-2xl mx-auto">{contactData.subtitle}</p>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                     <div>
                         <Card className="p-8">
-                            <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
+                            <h3 className="text-2xl font-bold mb-6">{contactData.form.title}</h3>
                             <form
                                 onSubmit={handleSubmit}
                                 onKeyDown={(e) => {
@@ -58,49 +57,49 @@ export const Contact = () => {
                                 }}
                                 className="space-y-6">
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Name</label>
+                                    <label className="block text-sm font-medium mb-2">{contactData.form.nameLabel}</label>
                                     <Input
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        placeholder="Your full name"
+                                        placeholder={contactData.form.namePlaceholder}
                                         required
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Email</label>
+                                    <label className="block text-sm font-medium mb-2">{contactData.form.emailLabel}</label>
                                     <Input
                                         name="email"
                                         type="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        placeholder="your.email@example.com"
+                                        placeholder={contactData.form.emailPlaceholder}
                                         required
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Phone</label>
+                                    <label className="block text-sm font-medium mb-2">{contactData.form.phoneLabel}</label>
                                     <Input
                                         name="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        placeholder="+91 98765 43210"
+                                        placeholder={contactData.form.phonePlaceholder}
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Message</label>
+                                    <label className="block text-sm font-medium mb-2">{contactData.form.messageLabel}</label>
                                     <Textarea
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        placeholder="Tell us about your project..."
+                                        placeholder={contactData.form.messagePlaceholder}
                                         rows={4}
                                         required
                                     />
                                 </div>
 
                                 <button className="w-full text-zinc-200 hover:text-zinc-200 backdrop-blur-lg bg-gradient-to-tr from-transparent via-[rgba(143,140,140,0.16)] to-transparent rounded-md py-2 px-6 shadow hover:shadow-zinc-400 duration-700">
-                                    {loading ? <Loader2 className="animate-spin mx-auto text-white" /> : 'Send Message'}
+                                    {loading ? <Loader2 className="animate-spin mx-auto text-white" /> : contactData.form.buttonLabel}
                                 </button>
                             </form>
                         </Card>
@@ -108,58 +107,77 @@ export const Contact = () => {
 
                     <div className="space-y-8">
                         <div>
-                            <h3 className="text-2xl font-bold mb-6">Get in touch</h3>
+                            <h3 className="text-2xl font-bold mb-6">{contactData.card.title}</h3>
                             <div className="space-y-4">
                                 <div className="flex items-center space-x-3">
                                     <Mail className="h-5 w-5 text-primary" />
-                                    <span>contact@webdevagency.com</span>
+                                    <span>{contactData.card.email}</span>
                                 </div>
                                 <div className="flex items-center space-x-3">
                                     <Phone className="h-5 w-5 text-primary" />
-                                    <span>+91 98765 43210</span>
+                                    <span>{contactData.card.phone}</span>
                                 </div>
                                 <div className="flex items-center space-x-3">
                                     <MapPin className="h-5 w-5 text-primary" />
-                                    <span>Mumbai, India</span>
+                                    <span>{contactData.card.address}</span>
                                 </div>
                             </div>
                         </div>
 
                         <div>
-                            <h4 className="text-lg font-semibold mb-4">Follow us</h4>
+                            <h4 className="text-lg font-semibold mb-4">{contactData.link.title}</h4>
                             <div className="flex space-x-4">
-                                <Button
-                                    variant="outline"
-                                    size="icon">
-                                    <Facebook className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    size="icon">
-                                    <Twitter className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    size="icon">
-                                    <Linkedin className="h-4 w-4" />
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    size="icon">
-                                    <Instagram className="h-4 w-4" />
-                                </Button>
+                                <a
+                                    href={contactData.link.facebook}
+                                    target="_blank"
+                                    rel="noreferrer">
+                                    <Button
+                                        variant="outline"
+                                        size="icon">
+                                        <Facebook className="h-4 w-4" />
+                                    </Button>
+                                </a>
+                                <a
+                                    href={contactData.link.twitter}
+                                    target="_blank"
+                                    rel="noreferrer">
+                                    <Button
+                                        variant="outline"
+                                        size="icon">
+                                        <Twitter className="h-4 w-4" />
+                                    </Button>
+                                </a>
+                                <a
+                                    href={contactData.link.linkedin}
+                                    target="_blank"
+                                    rel="noreferrer">
+                                    <Button
+                                        variant="outline"
+                                        size="icon">
+                                        <Linkedin className="h-4 w-4" />
+                                    </Button>
+                                </a>
+                                <a
+                                    href={contactData.link.instagram}
+                                    target="_blank"
+                                    rel="noreferrer">
+                                    <Button
+                                        variant="outline"
+                                        size="icon">
+                                        <Instagram className="h-4 w-4" />
+                                    </Button>
+                                </a>
                             </div>
                         </div>
 
                         <Card className="p-6 bg-[#262626] text-primary-foreground rounded-2xl shadow-lg">
-                            <h4 className="text-xl font-bold mb-3 text-white">✨ Free Consultation</h4>
+                            <h4 className="text-xl font-bold mb-3 text-white">{contactData.otherCard.title}</h4>
                             <p className="text-gray-300 leading-relaxed mb-2">
-                                Have a project idea in mind or need expert guidance with your development? Enjoy a{' '}
-                                <span className="font-semibold text-white">free 30-minute consultation</span>
-                                with our team to discuss your <span className="italic">goals, challenges,</span>
-                                and the best way forward.
+                                {contactData.otherCard.subtitle1} <span className="font-semibold text-white">{contactData.otherCard.subtitle2}</span>
+                                {contactData.otherCard.subtitle3} <span className="italic">{contactData.otherCard.subtitle4}</span>
+                                {contactData.otherCard.subtitle5}.
                             </p>
-                            <div className="mt-3 text-sm text-gray-400">No obligations • 100% confidential • Expert advice</div>
+                            <div className="mt-3 text-sm text-gray-200">{contactData.otherCard.tagline}</div>
                         </Card>
                     </div>
                 </div>

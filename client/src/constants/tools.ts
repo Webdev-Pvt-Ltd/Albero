@@ -7,7 +7,7 @@ import { TbBrandMysql, TbSeo } from 'react-icons/tb'
 import { PiFigmaLogoFill } from 'react-icons/pi'
 import { GrAndroid } from 'react-icons/gr'
 
-export const LOGOS = [
+const LOGOS = [
     { id: 1, icon: FaHtml5, iconName: 'HTML5' },
     { id: 2, icon: FaCss3Alt, iconName: 'CSS3' },
     { id: 3, icon: FaJsSquare, iconName: 'JavaScript' },

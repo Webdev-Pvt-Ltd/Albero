@@ -4,7 +4,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 
 // Components
 import Loader from './components/user/common/Loader'
-import NotFound from './components/user/common/NotFound'
+import NotFound from './components/user/not-found/NotFound'
 import { Navbar } from './components/ui/navbar'
 import OfflinePage from './components/user/common/OfflinePage'
 import Footer from './components/ui/animated-footer'

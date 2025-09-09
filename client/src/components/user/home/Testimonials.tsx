@@ -1,66 +1,10 @@
 import { TestimonialsColumn } from '@/components/ui/testimonials-columns-1'
 import { Badge } from '@/components/ui/badge'
+import { testimonialsData } from '@/constants/testimonials'
 
-const testimonials = [
-    {
-        text: 'This ERP revolutionized our operations, streamlining finance and inventory. The cloud-based platform keeps us productive, even remotely.',
-        image: 'https://randomuser.me/api/portraits/women/1.jpg',
-        name: 'Briana Patton',
-        role: 'Operations Manager'
-    },
-    {
-        text: 'Implementing this ERP was smooth and quick. The customizable, user-friendly interface made team training effortless.',
-        image: 'https://randomuser.me/api/portraits/men/2.jpg',
-        name: 'Bilal Ahmed',
-        role: 'IT Manager'
-    },
-    {
-        text: 'The support team is exceptional, guiding us through setup and providing ongoing assistance, ensuring our satisfaction.',
-        image: 'https://randomuser.me/api/portraits/women/3.jpg',
-        name: 'Saman Malik',
-        role: 'Customer Support Lead'
-    },
-    {
-        text: "This ERP's seamless integration enhanced our business operations and efficiency. Highly recommend for its intuitive interface.",
-        image: 'https://randomuser.me/api/portraits/men/4.jpg',
-        name: 'Omar Raza',
-        role: 'CEO'
-    },
-    {
-        text: 'Its robust features and quick support have transformed our workflow, making us significantly more efficient.',
-        image: 'https://randomuser.me/api/portraits/women/5.jpg',
-        name: 'Zainab Hussain',
-        role: 'Project Manager'
-    },
-    {
-        text: 'The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.',
-        image: 'https://randomuser.me/api/portraits/women/6.jpg',
-        name: 'Aliza Khan',
-        role: 'Business Analyst'
-    },
-    {
-        text: 'Our business functions improved with a user-friendly design and positive customer feedback.',
-        image: 'https://randomuser.me/api/portraits/men/7.jpg',
-        name: 'Farhan Siddiqui',
-        role: 'Marketing Director'
-    },
-    {
-        text: 'They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.',
-        image: 'https://randomuser.me/api/portraits/women/8.jpg',
-        name: 'Sana Sheikh',
-        role: 'Sales Manager'
-    },
-    {
-        text: 'Using this ERP, our online presence and conversions significantly improved, boosting business performance.',
-        image: 'https://randomuser.me/api/portraits/men/9.jpg',
-        name: 'Hassan Ali',
-        role: 'E-commerce Manager'
-    }
-]
-
-const firstColumn = testimonials.slice(0, 3)
-const secondColumn = testimonials.slice(3, 6)
-const thirdColumn = testimonials.slice(6, 9)
+const firstColumn = testimonialsData.testimonials.slice(0, 3)
+const secondColumn = testimonialsData.testimonials.slice(3, 6)
+const thirdColumn = testimonialsData.testimonials.slice(6, 9)
 
 export default function Testimonials() {
     return (
@@ -70,12 +14,10 @@ export default function Testimonials() {
                     <Badge
                         variant="outline"
                         className="mb-6 text-white text-xl">
-                        Testimonials
+                        {testimonialsData.badgeTitle}
                     </Badge>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">What Our Clients Say</h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-white">
-                        Don't just take our word for it. Here's what our satisfied clients have to say about our work.
-                    </p>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">{testimonialsData.title}</h2>
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-white">{testimonialsData.subtitle}</p>
                 </div>
 
                 <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
