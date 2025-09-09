@@ -10,19 +10,20 @@ import Testimonials from '@/components/user/home/Testimonials'
 import { Contact } from '@/components/user/home/Contact'
 import SEO from '@/components/user/common/SEO'
 import { heroData } from '@/constants/hero'
+import { homeSEO } from '@/constants/seo'
 
 export default function Home() {
     return (
         <div>
             {/* SEO */}
             <SEO
-                title="Albero - Web Development & Digital Growth Solutions"
-                description="Albero helps startups, SMEs, and enterprises with smarter web development, faster launch, and digital growth solutions. Build, scale, and grow your business online."
-                keywords="Albero, web development company, digital solutions, website design, custom web apps, startups, SMEs, enterprise software, business growth, IT services"
-                url="https://www.albero.in/"
-                canonical="https://www.albero.in/"
-                image="https://www.albero.in/og-image.png"
-                type="website"
+                title={homeSEO.title}
+                description={homeSEO.description}
+                keywords={homeSEO.keywords}
+                url={homeSEO.url}
+                canonical={homeSEO.canonical}
+                image={homeSEO.image}
+                type={homeSEO.type}
             />
 
             {/* Components */}

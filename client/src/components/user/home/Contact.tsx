@@ -109,18 +109,26 @@ export const Contact = () => {
                         <div>
                             <h3 className="text-2xl font-bold mb-6">{contactData.card.title}</h3>
                             <div className="space-y-4">
-                                <div className="flex items-center space-x-3">
+                                <a
+                                    href={`mailto:${contactData.card.email}`}
+                                    className="flex items-center space-x-3">
                                     <Mail className="h-5 w-5 text-primary" />
                                     <span>{contactData.card.email}</span>
-                                </div>
-                                <div className="flex items-center space-x-3">
+                                </a>
+                                <a
+                                    href={`tel:${contactData.card.phone}`}
+                                    className="flex items-center space-x-3">
                                     <Phone className="h-5 w-5 text-primary" />
                                     <span>{contactData.card.phone}</span>
-                                </div>
-                                <div className="flex items-center space-x-3">
+                                </a>
+                                <a
+                                    className="flex items-center space-x-3"
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactData.card.address)}`}
+                                    target="_blank"
+                                    rel="noreferrer">
                                     <MapPin className="h-5 w-5 text-primary" />
                                     <span>{contactData.card.address}</span>
-                                </div>
+                                </a>
                             </div>
                         </div>
 

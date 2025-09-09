@@ -2,19 +2,20 @@ import { Link } from 'react-router-dom'
 import { FlowButton } from '../../ui/flow-button'
 import { Glitchy404 } from '../../ui/glitchy-404-1'
 import SEO from '../common/SEO'
+import { notFoundSEO } from '@/constants/seo'
 
 function NotFound() {
     return (
         <div>
             {/* SEO */}
             <SEO
-                title="Albero - Page Not Found (404)"
-                description="The page you are looking for does not exist. Return to the homepage and explore our web development and digital growth solutions."
-                keywords="Albero, 404 error, page not found, web development, digital solutions, website design, custom web apps, business growth"
-                url="https://www.albero.in/"
-                canonical="https://www.albero.in/"
-                image="https://www.albero.in/og-image.png"
-                type="website"
+                title={notFoundSEO.title}
+                description={notFoundSEO.description}
+                keywords={notFoundSEO.keywords}
+                url={notFoundSEO.url}
+                canonical={notFoundSEO.canonical}
+                image={notFoundSEO.image}
+                type={notFoundSEO.type}
             />
 
             <div className="bg-black min-h-screen flex flex-col justify-center items-center text-white">

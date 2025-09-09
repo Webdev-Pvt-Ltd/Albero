@@ -1,18 +1,19 @@
 import SEO from '@/components/user/common/SEO'
 import RefundPolicy from '@/components/user/refund/RefundPolicy'
+import { refundSEO } from '@/constants/seo'
 
 export default function Refund() {
     return (
         <div>
             {/* SEO */}
             <SEO
-                title="Refund Policy - Albero"
-                description="Read Albero's Refund Policy to understand eligibility, non-refundable items, and the refund process. We prioritize your satisfaction and provide clear guidance for refunds."
-                keywords="Albero refund policy, refunds, return policy, digital services refund, purchase refund, service refund"
-                url="https://www.albero.in/refund-policy"
-                canonical="https://www.albero.in/refund-policy"
-                image="https://www.albero.in/og-image.png"
-                type="website"
+                title={refundSEO.title}
+                description={refundSEO.description}
+                keywords={refundSEO.keywords}
+                url={refundSEO.url}
+                canonical={refundSEO.canonical}
+                image={refundSEO.image}
+                type={refundSEO.type}
             />
 
             {/* Components */}
