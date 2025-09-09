@@ -3,15 +3,18 @@ import config from './config/config'
 import { initRateLimiter } from './config/rateLimiter'
 import db from './service/db'
 import logger from './util/logger'
+import job from './config/cron';
 
 const server = app.listen(config.PORT)
 
-// Immediately invoked function expression to handle server startup
+// eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+if (config.ENV === 'production') job.start();
+
 
 // eslint-disable-next-line @typescript-eslint/no-floating-promises
 ;(async () => {
     try {
-        // Database connection
+        // Database connection (still useful if db.connect() returns Pool or client info)
         const connection = await db.connect()
         logger.info(`DATABASE_CONNECTION`, {
             meta: {
@@ -21,7 +24,8 @@ const server = app.listen(config.PORT)
             }
         })
 
-        initRateLimiter(connection)
+        // ✅ Use DATABASE_URL for Postgres rate limiter
+        initRateLimiter(process.env.DATABASE_URL!)
 
         logger.info(`RATE_LIMITER_INITIALIZED`)
 

@@ -1,23 +1,18 @@
+// src/middleware/rateLimit.ts
 import { NextFunction, Request, Response } from 'express'
-// import config from '../config/config'
-// import { EApplicationEnvironment } from '../constant/application'
-import { rateLimiterMongo } from '../config/rateLimiter'
+import { rateLimiterPostgres } from '../config/rateLimiter'
 import httpError from '../util/httpError'
 import responseMessage from '../constant/responseMessage'
 
-export default (req: Request, _: Response, next: NextFunction) => {
-    // if (config.ENV === EApplicationEnvironment.DEVELOPMENT) {
-    //     return next()
-    // }
+export default async (req: Request, _: Response, next: NextFunction) => {
+  if (!rateLimiterPostgres) {
+    return httpError(next, new Error('Rate limiter not initialized'), req, 500)
+  }
 
-    if (rateLimiterMongo) {
-        rateLimiterMongo
-            .consume(req.ip as string, 1)
-            .then(() => {
-                next()
-            })
-            .catch(() => {
-                httpError(next, new Error(responseMessage.TOO_MANY_REQUESTS), req, 429)
-            })
-    }
+  try {
+    await rateLimiterPostgres.consume(req.ip ?? 'unknown') // consume 1 point per request
+    next()
+  } catch {
+    httpError(next, new Error(responseMessage.TOO_MANY_REQUESTS), req, 429)
+  }
 }
