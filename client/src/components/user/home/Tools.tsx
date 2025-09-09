@@ -4,15 +4,7 @@ import useMeasure from 'react-use-measure'
 
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
-
-// Icons
-import { FaAppStoreIos, FaAws, FaCss3Alt, FaHtml5, FaJsSquare, FaLaravel, FaWordpress } from 'react-icons/fa'
-import { RiNextjsFill, RiReactjsFill, RiTailwindCssFill } from 'react-icons/ri'
-import { IoLogoNodejs } from 'react-icons/io5'
-import { SiExpress, SiGodaddy, SiHostinger, SiMongodb, SiPhp } from 'react-icons/si'
-import { TbBrandMysql, TbSeo } from 'react-icons/tb'
-import { PiFigmaLogoFill } from 'react-icons/pi'
-import { GrAndroid } from 'react-icons/gr'
+import { toolsData } from '@/constants/tools'
 
 function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs))
@@ -133,40 +125,13 @@ export function BlurredInfiniteSlider({ children, fadeWidth = 80, containerClass
     )
 }
 
-const LOGOS = [
-    { id: 1, icon: <FaHtml5 size={36} />, iconName: 'HTML5' },
-    { id: 2, icon: <FaCss3Alt size={36} />, iconName: 'CSS3' },
-    { id: 3, icon: <FaJsSquare size={36} />, iconName: 'JavaScript' },
-    { id: 4, icon: <RiTailwindCssFill size={36} />, iconName: 'Tailwind CSS' },
-    { id: 5, icon: <RiReactjsFill size={36} />, iconName: 'React JS' },
-    { id: 6, icon: <IoLogoNodejs size={36} />, iconName: 'NodeJS' },
-    { id: 7, icon: <SiExpress size={36} />, iconName: 'Express' },
-    { id: 8, icon: <SiMongodb size={36} />, iconName: 'MongoDB' },
-    { id: 9, icon: <TbBrandMysql size={36} />, iconName: 'MySQL' },
-    { id: 10, icon: <SiPhp size={36} />, iconName: 'PHP' },
-    { id: 11, icon: <FaLaravel size={36} />, iconName: 'Laravel' },
-    { id: 12, icon: <FaWordpress size={36} />, iconName: 'WordPress' },
-    { id: 13, icon: <RiNextjsFill size={36} />, iconName: 'Next.js' },
-    { id: 14, icon: <GrAndroid size={36} />, iconName: 'Android' },
-    { id: 15, icon: <FaAppStoreIos size={36} />, iconName: 'iOS' },
-    { id: 15, icon: <TbSeo size={36} />, iconName: 'SEO' },
-    { id: 16, icon: <FaAws size={36} />, iconName: 'AWS' },
-    { id: 17, icon: <PiFigmaLogoFill size={36} />, iconName: 'Figma' },
-    { id: 18, icon: <SiHostinger size={36} />, iconName: 'Hostinger' },
-    { id: 19, icon: <SiGodaddy size={36} />, iconName: 'Godaddy' }
-    // { id: 16, icon: <FaGithub size={36} />, iconName: 'GitHub' },
-    // { id: 17, icon: <IoLogoVercel size={36} />, iconName: 'Vercel' },
-    // { id: 18, icon: <SiNetlify size={36} />, iconName: 'Netlify' },
-    // { id: 19, icon: <FaWix size={36} />, iconName: 'Wix' }
-]
-
 export default function LogoCloudDemoPage() {
     return (
         <section className="w-full bg-black overflow-hidden py-16">
             <div className="m-auto max-w-7xl md:px-5">
                 <div className="flex flex-col items-center md:flex-row">
                     <div className="flex-shrink-0 text-center md:text-right md:max-w-44 md:border-r md:border-gray-200 dark:md:border-gray-800 md:pr-6">
-                        <p className="text-sm text-gray-600 dark:text-gray-400">Empowering Business Through Technology</p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{toolsData.heading}</p>
                     </div>
                     {/* На маленьких экранах этот блок будет под текстом */}
                     <div className="w-full py-6 md:w-auto md:flex-1">
@@ -175,11 +140,11 @@ export default function LogoCloudDemoPage() {
                             speed={40}
                             gap={112}
                             fadeWidth={80}>
-                            {LOGOS.map((logo) => (
+                            {toolsData.logos.map((logo) => (
                                 <div
                                     className="mx-auto w-fit invert hover:text-blue-500 hover:scale-110 transition-transform duration-200"
                                     title={logo.iconName}>
-                                    {logo.icon}
+                                    <logo.icon size={48} />
                                 </div>
                             ))}
                         </BlurredInfiniteSlider>

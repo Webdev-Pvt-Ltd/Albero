@@ -1,4 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
+import { featuresData } from '@/constants/features'
 import { Shield, Users } from 'lucide-react'
 
 export function Features() {
@@ -20,9 +21,9 @@ export function Features() {
                                             fill="currentColor"
                                         />
                                     </svg>
-                                    <span className="mx-auto block w-fit text-5xl font-semibold text-white">100%</span>
+                                    <span className="mx-auto block w-fit text-5xl font-semibold text-white">{featuresData[0]?.card1?.title}</span>
                                 </div>
-                                <h2 className="mt-6 text-center text-3xl font-semibold text-white">Customizable</h2>
+                                <h2 className="mt-6 text-center text-3xl font-semibold text-white">{featuresData[0]?.card1?.subtitle}</h2>
                             </CardContent>
                         </Card>
                         <Card className="relative col-span-full overflow-hidden sm:col-span-3 lg:col-span-2">
@@ -81,10 +82,10 @@ export function Features() {
                                     </svg>
                                 </div>
                                 <div className="relative z-10 mt-6 space-y-2 text-center">
-                                    <h2 className="group-hover:text-secondary-950 text-lg font-medium transition text-white">Secure by default</h2>
-                                    <p className="text-white/70">
-                                        Provident fugit and vero voluptate. magnam magni doloribus dolores voluptates a sapiente nisi.
-                                    </p>
+                                    <h2 className="group-hover:text-secondary-950 text-lg font-medium transition text-white">
+                                        {featuresData[1]?.card2?.title}
+                                    </h2>
+                                    <p className="text-white/70">{featuresData[1]?.card2?.subtitle}</p>
                                 </div>
                             </CardContent>
                         </Card>
@@ -177,10 +178,8 @@ export function Features() {
                                     </svg>
                                 </div>
                                 <div className="relative z-10 mt-14 space-y-2 text-center">
-                                    <h2 className="text-lg font-medium transition text-white">Faster than light</h2>
-                                    <p className="text-white/70">
-                                        Provident fugit vero voluptate. magnam magni doloribus dolores voluptates inventore nisi.
-                                    </p>
+                                    <h2 className="text-lg font-medium transition text-white">{featuresData[2]?.card3?.title}</h2>
+                                    <p className="text-white/70">{featuresData[2]?.card3?.subtitle}</p>
                                 </div>
                             </CardContent>
                         </Card>
@@ -195,9 +194,9 @@ export function Features() {
                                     </div>
                                     <div className="space-y-2">
                                         <h2 className="group-hover:text-secondary-950 text-lg font-medium transition text-white">
-                                            Faster than light
+                                            {featuresData[3]?.card4?.title}
                                         </h2>
-                                        <p className="text-white/70">Provident fugit vero voluptate. Voluptates a sapiente inventore nisi.</p>
+                                        <p className="text-white/70">{featuresData[3]?.card4?.subtitle}</p>
                                     </div>
                                 </div>
                                 <div className="rounded-tl-(--radius) relative -mb-6 -mr-6 mt-6 h-fit border-[#18181b] border-l border-t p-6 py-6 sm:ml-6">
@@ -257,21 +256,21 @@ export function Features() {
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <h2 className="text-lg font-medium transition text-white">Keep your loved ones safe</h2>
-                                        <p className="text-white/70">
-                                            Voluptate. magnam magni doloribus dolores voluptates a sapiente inventore nisi.
-                                        </p>
+                                        <h2 className="text-lg font-medium transition text-white">{featuresData[4]?.card5?.title}</h2>
+                                        <p className="text-white/70">{featuresData[4]?.card5?.subtitle}</p>
                                     </div>
                                 </div>
                                 <div className="before:bg-white relative mt-6 before:absolute before:inset-0 before:mx-auto before:w-px sm:-my-6 sm:-mr-6">
                                     <div className="relative flex h-full flex-col justify-center space-y-6 py-6">
                                         <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
-                                            <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm text-white">Likeur</span>
+                                            <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm text-white">
+                                                {featuresData[4]?.card5?.avatarName1}
+                                            </span>
                                             <div className="ring-background size-7 ring-4">
                                                 <img
                                                     className="size-full rounded-full"
-                                                    src="https://avatars.githubusercontent.com/u/102558960?v=4"
-                                                    alt=""
+                                                    src={featuresData[4]?.card5?.avatar1}
+                                                    alt={featuresData[4]?.card5?.avatarName1}
                                                 />
                                             </div>
                                         </div>
@@ -279,19 +278,23 @@ export function Features() {
                                             <div className="ring-background size-8 ring-4">
                                                 <img
                                                     className="size-full rounded-full"
-                                                    src="https://avatars.githubusercontent.com/u/47919550?v=4"
-                                                    alt=""
+                                                    src={featuresData[4]?.card5?.avatar2}
+                                                    alt={featuresData[4]?.card5?.avatarName2}
                                                 />
                                             </div>
-                                            <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm text-white">M. Irung</span>
+                                            <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm text-white">
+                                                {featuresData[4]?.card5?.avatarName2}
+                                            </span>
                                         </div>
                                         <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-2">
-                                            <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm text-white">B. Ng</span>
+                                            <span className="block h-fit rounded border px-2 py-1 text-xs shadow-sm text-white">
+                                                {featuresData[4]?.card5?.avatarName3}
+                                            </span>
                                             <div className="ring-background size-7 ring-4">
                                                 <img
                                                     className="size-full rounded-full"
-                                                    src="https://avatars.githubusercontent.com/u/31113941?v=4"
-                                                    alt=""
+                                                    src={featuresData[4]?.card5?.avatar3}
+                                                    alt={featuresData[4]?.card5?.avatarName3}
                                                 />
                                             </div>
                                         </div>

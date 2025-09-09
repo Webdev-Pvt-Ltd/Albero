@@ -9,6 +9,7 @@ import WhyChooseUs from '@/components/user/home/WhyChooseUs'
 import Testimonials from '@/components/user/home/Testimonials'
 import { Contact } from '@/components/user/home/Contact'
 import SEO from '@/components/user/common/SEO'
+import { heroData } from '@/constants/hero'
 
 export default function Home() {
     return (
@@ -26,10 +27,10 @@ export default function Home() {
 
             {/* Components */}
             <Hero
-                title="Smarter Development • Faster Launch • Better Growth"
-                subtitle="We help startups, SMEs, and enterprises grow digitally with tailored web solutions."
-                eyebrow="Get a Free Quote"
-                ctaLabel="Get Started"
+                title={heroData.title}
+                subtitle={heroData.subtitle}
+                eyebrow={heroData.eyebrow}
+                ctaLabel={heroData.ctaLabel}
             />
             <Tools />
             <Stats />

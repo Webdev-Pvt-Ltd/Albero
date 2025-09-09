@@ -50,6 +50,12 @@ export const Contact = () => {
                             <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
                             <form
                                 onSubmit={handleSubmit}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter' && e.target instanceof HTMLTextAreaElement) {
+                                        e.stopPropagation()
+                                        handleSubmit(e)
+                                    }
+                                }}
                                 className="space-y-6">
                                 <div>
                                     <label className="block text-sm font-medium mb-2">Name</label>

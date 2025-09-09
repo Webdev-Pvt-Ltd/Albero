@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge'
 import { ServicesSection } from '@/components/ui/feature'
+import { servicesData } from '@/constants/services'
 
 export default function Services() {
     return (
@@ -10,12 +11,10 @@ export default function Services() {
                 <Badge
                     variant="outline"
                     className="mb-6 text-white text-xl">
-                    Our Services
+                    {servicesData.badgeTitle}
                 </Badge>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Comprehensive Web Development Solutions</h2>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                    From simple websites to complex enterprise applications, we deliver solutions tailored to your needs.
-                </p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">{servicesData.heading}</h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{servicesData.description}</p>
             </div>
 
             <ServicesSection />

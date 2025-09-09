@@ -1,69 +1,15 @@
+import { servicesData } from '@/constants/services'
 import { cn } from '@/lib/utils'
-import {
-    IconFileTypeJsx,
-    IconBrandWordpress,
-    IconBrandLaravel,
-    IconBrandReact,
-    IconBrandNextjs,
-    IconPhotoSquareRounded,
-    IconCloud,
-    IconEyeSearch
-} from '@tabler/icons-react'
 
 export function ServicesSection() {
-    const features = [
-        {
-            title: 'HTML/JS Development',
-            description:
-                'We build fast, responsive, and interactive static websites with modern JavaScript features to deliver seamless user experiences.',
-            icon: <IconFileTypeJsx />
-        },
-        {
-            title: 'WordPress Development',
-            description:
-                'Custom WordPress solutions tailored to your business needs—ranging from simple blogs to fully functional e-commerce platforms.',
-            icon: <IconBrandWordpress />
-        },
-        {
-            title: 'Laravel Development',
-            description:
-                'Robust, scalable, and secure Laravel applications with clean code and optimized backend performance for your business growth.',
-            icon: <IconBrandLaravel />
-        },
-        {
-            title: 'MERN Stack',
-            description:
-                'Full-stack web applications using MongoDB, Express.js, React, and Node.js for dynamic, scalable, and high-performance solutions.',
-            icon: <IconBrandReact />
-        },
-        {
-            title: 'Next.js Development',
-            description:
-                'Cutting-edge Next.js applications with server-side rendering, SEO optimization, and lightning-fast performance for modern web apps.',
-            icon: <IconBrandNextjs />
-        },
-        {
-            title: 'UI/UX Design',
-            description: 'Beautiful, user-friendly designs focused on delivering intuitive digital experiences and enhancing customer engagement.',
-            icon: <IconPhotoSquareRounded />
-        },
-        {
-            title: 'Hosting & Domain',
-            description: 'Reliable hosting and domain management services with smooth deployment, high uptime, and complete scalability.',
-            icon: <IconCloud />
-        },
-        {
-            title: 'SEO & Marketing',
-            description: 'Data-driven SEO strategies and digital marketing solutions to boost online visibility, traffic, and conversions.',
-            icon: <IconEyeSearch />
-        }
-    ]
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 max-w-7xl mx-auto">
-            {features.map((feature, index) => (
+            {servicesData.features.map((feature, index) => (
                 <Feature
                     key={feature.title}
-                    {...feature}
+                    title={feature.title}
+                    description={feature.description}
+                    icon={<feature.icon />}
                     index={index}
                 />
             ))}

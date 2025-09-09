@@ -1,16 +1,13 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '../../ui/badge'
+import { statsData } from '@/constants/stats'
 
 type Stat = {
     value: string
     label: string
 }
 
-const STATS: Stat[] = [
-    { value: '5+', label: 'Years Experience' },
-    { value: '200+', label: 'Projects Completed' },
-    { value: '50+', label: 'Happy Clients' }
-]
+const STATS: Stat[] = statsData.stats
 
 export default function Stats() {
     return (
@@ -21,13 +18,10 @@ export default function Stats() {
                 <Badge
                     variant="outline"
                     className="mb-6 text-white text-xl">
-                    About Us
+                    {statsData.badgeTitle}
                 </Badge>
-                <h2 className="text-3xl md:text-4xl text-white font-bold mb-6">Empowering Businesses with Digital Transformation</h2>
-                <p className="text-lg text-white/70 mb-8">
-                    With over 5 years of experience serving 200+ clients across various industries, we specialize in creating high-performance web
-                    solutions that drive business growth.
-                </p>
+                <h2 className="text-3xl md:text-4xl text-white font-bold mb-6">{statsData.heading}</h2>
+                <p className="text-lg text-white/70 mb-8">{statsData.description}</p>
             </div>
             <div className="mx-auto w-full max-w-5xl px-4 sm:px-6">
                 <Card
