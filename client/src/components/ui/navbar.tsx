@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { NavLink } from '../user/common/NavLink'
 import { Menu, X } from 'lucide-react'
 import Logo from '../../assets/images/logo.png'
-
-import { useNavigate, useLocation } from 'react-router-dom'
 
 const AnimatedNavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
     const navigate = useNavigate()
@@ -37,38 +37,6 @@ const AnimatedNavLink = ({ href, children }: { href: string; children: React.Rea
                 <span className="text-white">{children}</span>
                 <span className="text-white">{children}</span>
             </div>
-        </a>
-    )
-}
-
-const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
-    const navigate = useNavigate()
-    const location = useLocation()
-
-    const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault()
-        const targetId = href.replace('#', '')
-
-        if (location.pathname !== '/') {
-            // Navigate to home, then scroll after load
-            navigate('/', { state: { scrollTo: targetId } })
-        } else {
-            // Already on home → scroll directly with offset
-            const section = document.getElementById(targetId)
-            if (section) {
-                const yOffset = -60 // 👈 adjust this to your navbar height
-                const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset
-
-                window.scrollTo({ top: y, behavior: 'smooth' })
-            }
-        }
-    }
-
-    return (
-        <a
-            href={href}
-            onClick={handleClick}>
-            {children}
         </a>
     )
 }

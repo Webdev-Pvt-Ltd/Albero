@@ -7,6 +7,8 @@ import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
 import { useContactForm } from '@/hooks/user/useContactForm'
 import { contactData } from '@/constants/contact'
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 export const Contact = () => {
     const { submitForm, loading } = useContactForm()
@@ -24,8 +26,49 @@ export const Contact = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        await submitForm(formData)
-        setFormData({ name: '', email: '', phone: '', message: '' })
+        const success = await submitForm(formData)
+
+        if (success) {
+            await handleSubmitGoogleForm()
+            setFormData({ name: '', email: '', phone: '', message: '' })
+        }
+    }
+
+    const handleSubmitGoogleForm = async () => {
+        const scriptURL = import.meta.env.VITE_SHEET_URL
+
+        const formDataSheet = new FormData()
+
+        // Add date and time
+        const today = new Date()
+        const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`
+        const formattedTime = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
+        formDataSheet.append('Date', formattedDate)
+        formDataSheet.append('Time', formattedTime)
+
+        // Add form fields
+        formDataSheet.append('Name', formData.name)
+        formDataSheet.append('Email', formData.email)
+        formDataSheet.append('Phone', formData.phone || 'N/A')
+        formDataSheet.append('Message', formData.message)
+
+        try {
+            const response = await axios.post(scriptURL as string, formDataSheet, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
+
+            if (response.status !== 200) {
+                throw new Error('Failed to submit to Google Sheets')
+            }
+
+            toast.success('Submitted to Google Sheet!')
+            return true
+        } catch {
+            toast.error('Something went wrong! Please try again later.')
+            return false
+        }
     }
 
     return (
