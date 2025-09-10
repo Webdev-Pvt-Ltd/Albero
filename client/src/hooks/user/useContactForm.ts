@@ -9,8 +9,7 @@ export const useContactForm = () => {
         setLoading(true)
         try {
             const res = await sendContactForm(formData)
-            console.log('res', res)
-            showSuccess(res.message || 'Message sent successfully!')
+            showSuccess('Message sent successfully!')
             return res
         } catch (err: unknown) {
             if (typeof err === 'object' && err !== null && 'response' in err) {

@@ -11,22 +11,22 @@ export function generateWelcomeEmail(data: { name: string; email: string; messag
     <style>
       body {
         font-family: 'Inter', Arial, sans-serif;
-        background: #000;
+        background: #f9f9f9;
         margin: 0;
         padding: 0;
-        color: #fff;
+        color: #222;
       }
       .email-container {
         max-width: 600px;
         margin: 30px auto;
-        background: #0a0a0a;
+        background: #fff;
         border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.1);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+        border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         overflow: hidden;
       }
       .header {
-        background: linear-gradient(135deg, #ffffff0d, #6366f150);
+        background: linear-gradient(135deg, #f0f0f0, #d6d6d6);
         text-align: center;
         padding: 40px 20px;
       }
@@ -34,48 +34,56 @@ export function generateWelcomeEmail(data: { name: string; email: string; messag
         margin: 0;
         font-size: 26px;
         font-weight: 700;
-        background: linear-gradient(90deg, #fff, #888);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #111;
       }
       .content {
         padding: 30px;
       }
       .content p {
-        color: #ccc;
+        color: #444;
         line-height: 1.7;
         margin-bottom: 20px;
       }
       .message-card {
-        background: rgba(255,255,255,0.05);
-        border-left: 4px solid #fff;
+        background: #f4f4f4;
+        border-left: 4px solid #333;
         padding: 16px;
         border-radius: 8px;
         margin-top: 20px;
         font-size: 14px;
-        color: #ddd;
+        color: #333;
       }
       .social-links {
         margin: 25px 0;
         text-align: center;
       }
       .social-links a {
-        color: #fff;
+        color: #111;
         margin: 0 10px;
         text-decoration: none;
         font-weight: 500;
         transition: opacity 0.3s ease;
       }
-      .social-links a:hover {
-        opacity: 0.7;
-      }
+      .social-links a:hover { opacity: 0.7; }
       .footer {
         text-align: center;
         padding: 20px;
         font-size: 13px;
-        color: #666;
-        background: #0a0a0a;
-        border-top: 1px solid rgba(255,255,255,0.1);
+        color: #777;
+        background: #fafafa;
+        border-top: 1px solid rgba(0,0,0,0.1);
+      }
+
+      /* Dark Mode */
+      @media (prefers-color-scheme: dark) {
+        body { background: #000; color: #fff; }
+        .email-container { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 8px 24px rgba(0,0,0,0.6); }
+        .header { background: linear-gradient(135deg, #ffffff0d, #6366f150); }
+        .header h1 { background: linear-gradient(90deg, #fff, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .content p { color: #ccc; }
+        .message-card { background: rgba(255,255,255,0.05); border-left-color: #fff; color: #ddd; }
+        .social-links a { color: #fff; }
+        .footer { background: #0a0a0a; color: #666; border-top: 1px solid rgba(255,255,255,0.1); }
       }
     </style>
   </head>

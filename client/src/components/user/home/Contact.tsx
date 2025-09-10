@@ -39,18 +39,18 @@ export const Contact = () => {
 
         const formDataSheet = new FormData()
 
+        // Add form fields
+        formDataSheet.append('Name', formData.name)
+        formDataSheet.append('Email', formData.email)
+        formDataSheet.append('Phone', formData.phone || 'N/A')
+        formDataSheet.append('Message', formData.message)
+
         // Add date and time
         const today = new Date()
         const formattedDate = `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`
         const formattedTime = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`
         formDataSheet.append('Date', formattedDate)
         formDataSheet.append('Time', formattedTime)
-
-        // Add form fields
-        formDataSheet.append('Name', formData.name)
-        formDataSheet.append('Email', formData.email)
-        formDataSheet.append('Phone', formData.phone || 'N/A')
-        formDataSheet.append('Message', formData.message)
 
         try {
             const response = await axios.post(scriptURL as string, formDataSheet, {
@@ -63,7 +63,6 @@ export const Contact = () => {
                 throw new Error('Failed to submit to Google Sheets')
             }
 
-            toast.success('Submitted to Google Sheet!')
             return true
         } catch {
             toast.error('Something went wrong! Please try again later.')
