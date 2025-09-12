@@ -16,8 +16,8 @@ export const contactData = {
     },
     card: {
         title: 'Get in touch',
-        email: 'contact@webdevagency.com',
-        phone: '+1 (123) 456-7890',
+        email: 'contact@albero.in',
+        phone: '+91 9936897070',
         address: 'Noida, India'
     },
     link: {
