@@ -25,7 +25,7 @@ export const contactData = {
         facebook: 'https://facebook.com',
         twitter: 'https://twitter.com',
         linkedin: 'https://linkedin.com',
-        instagram: 'https://instagram.com'
+        instagram: 'https://www.instagram.com/albero_tech/'
     },
     otherCard: {
         title: 'Free Consultation',
