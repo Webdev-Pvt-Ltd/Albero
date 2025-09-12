@@ -14,7 +14,7 @@ export function Hero({ eyebrow = 'Innovate Without Limits', title, subtitle, cta
         <div className="bg-black/80">
             <section
                 id="home"
-                className="relative mx-auto w-full pt-40 px-5 text-center md:px-8 
+                className="relative flex flex-col justify-center mx-auto w-full pt-40 px-5 text-center md:px-8 
      lg:min-h-[calc(100vh)] overflow-hidden 
      bg-[linear-gradient(to_bottom,#000,#0000_30%,#898e8e_78%,#000000_99%_50%)] 
       rounded-b-xl">
