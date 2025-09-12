@@ -4,7 +4,7 @@
     "description": "",
     "main": "src/server.js",
     "scripts": {
-        "dist": "npx tsc",
+        "build": "tsc",
         "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/server.ts",
         "start": "cross-env NODE_ENV=production node dist/server.js",
         "lint": "eslint",
@@ -32,11 +32,15 @@
         "@commitlint/config-conventional": "^19.8.1",
         "@eslint/js": "^9.32.0",
         "@types/cors": "^2.8.19",
+        "@types/cron": "^2.0.1",
+        "@types/dotenv-flow": "^3.3.3",
         "@types/express": "^5.0.3",
-        "@types/node": "^24.1.0",
+        "@types/helmet": "^0.0.48",
+        "@types/node": "^24.3.1",
         "@types/nodemailer": "^7.0.1",
         "@types/pg": "^8.15.5",
         "@types/source-map-support": "^0.5.10",
+        "@types/winston": "^2.4.4",
         "eslint": "^9.32.0",
         "eslint-config-prettier": "^10.1.8",
         "express": "^5.1.0",
@@ -50,7 +54,7 @@
         "typescript-eslint": "^8.38.0"
     },
     "dependencies": {
-        "@prisma/client": "^6.15.0",
+        "@prisma/client": "^6.16.1",
         "colorette": "^2.0.20",
         "cors": "^2.8.5",
         "cron": "^4.3.3",
@@ -59,7 +63,7 @@
         "helmet": "^8.1.0",
         "nodemailer": "^7.0.6",
         "pg": "^8.16.3",
-        "rate-limiter-flexible": "^7.2.0",
+        "rate-limiter-flexible": "^7.3.0",
         "source-map-support": "^0.5.21",
         "winston": "^3.17.0"
     }
