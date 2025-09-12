@@ -12,7 +12,6 @@ on:
 
 jobs:
     test:
-        # Run only on push/pull for these branches or scheduled runs
         if: |
             (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')) ||
             (github.event_name == 'pull_request' && (github.base_ref == 'main' || github.base_ref == 'staging'))
@@ -24,22 +23,26 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
 
-            - name: Setup node js
+            - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '22'
 
-            - name: Install Dependencies
+            - name: Install Dependencies (Client)
               run: npm ci
+              working-directory: ./client
 
             - name: Run eslint
               run: npm run lint:eslint
+              working-directory: ./client
 
             - name: Run prettier
               run: npm run format:check
+              working-directory: ./client
 
             - name: Run stylelint
               run: npm run lint:stylelint
+              working-directory: ./client
 
             - name: Debug secrets presence
               run: |
@@ -50,13 +53,7 @@ jobs:
                   PORT: ${{ secrets.PORT }}
                   BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
                   VITE_ENV: ${{ vars.VITE_ENV }}
-
-            # - name: Run test coverage
-            #   run: npm run test:coverage
-            # env:
-            #     PORT: ${{ secrets.PORT }}
-            #     BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
-            #     VITE_ENV: ${{ vars.VITE_ENV }}
+              working-directory: ./client
 
     production:
         needs: test
@@ -67,16 +64,18 @@ jobs:
             - name: Checkout Repository
               uses: actions/checkout@v4
 
-            - name: Setup node js
+            - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '22'
 
-            - name: Install Dependencies
+            - name: Install Dependencies (Client)
               run: npm ci
+              working-directory: ./client
 
             - name: Build the application
               run: npm run build
+              working-directory: ./client
               env:
                   PORT: ${{ secrets.PORT }}
                   BACKEND_PROXY: ${{ secrets.BACKEND_PROXY }}
@@ -86,4 +85,4 @@ jobs:
               uses: actions/upload-artifact@v4
               with:
                   name: dist
-                  path: dist
+                  path: client/dist
