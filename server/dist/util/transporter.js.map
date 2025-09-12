@@ -1,1 +1,0 @@
-{"version":3,"file":"transporter.js","sourceRoot":"","sources":["../../src/util/transporter.ts"],"names":[],"mappings":";;;;;;AAAA,4DAAmC;AACnC,8DAAqC;AAExB,QAAA,WAAW,GAAG,oBAAU,CAAC,eAAe,CAAC;IAClD,OAAO,EAAE,OAAO;IAChB,IAAI,EAAE;QACF,IAAI,EAAE,gBAAM,CAAC,UAAU;QACvB,IAAI,EAAE,gBAAM,CAAC,UAAU;KAC1B;CACJ,CAAC,CAAA"}
