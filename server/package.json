@@ -12,8 +12,10 @@
         "format:check": "prettier --check .",
         "format:fix": "prettier --write .",
         "prepare": "husky",
-        "migrate:dev": "cross-env MIGRATE_MODE=development node script/migration.js",
-        "migrate:prod": "cross-env MIGRATE_MODE=production node script/migration.js"
+        "generate": "prisma generate",
+        "postinstall": "prisma generate",
+        "migrate:dev": "cross-env MIGRATE_MODE=development prisma migrate dev --name init",
+        "migrate:prod": "cross-env MIGRATE_MODE=production prisma migrate deploy"
     },
     "keywords": [],
     "author": "",
