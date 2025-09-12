@@ -6,7 +6,7 @@
     "scripts": {
         "build": "tsc",
         "dev": "cross-env NODE_ENV=development nodemon --legacy-watch src/server.ts",
-        "start": "cross-env NODE_ENV=production node dist/server.js",
+        "start": "cross-env NODE_ENV=production node src/server.ts",
         "lint": "eslint",
         "lint:fix": "eslint --fix",
         "format:check": "prettier --check .",
