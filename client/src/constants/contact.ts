@@ -17,7 +17,7 @@ export const contactData = {
     card: {
         title: 'Get in touch',
         email: 'contact@albero.in',
-        phone: '+91 9936897070',
+        phone: '+91 8172963607',
         address: 'Noida, India'
     },
     link: {
