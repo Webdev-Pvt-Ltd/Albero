@@ -1,8 +1,11 @@
+/robots.txt   /robots.txt   200
+/sitemap.xml  /sitemap.xml  200
+
 /*    /index.html   200
 
 # Redirect HTTP to HTTPS
-http://albero.in/* https://albero.in/:splat 301!
-http://www.albero.in/* https://www.albero.in/:splat 301!
+http://albero.in/*     https://albero.in/:splat      301!
+http://www.albero.in/* https://www.albero.in/:splat  301!
 
 # Redirect non-www to www
-https://albero.in/* https://www.albero.in/:splat 301!
+https://albero.in/*    https://www.albero.in/:splat  301!
