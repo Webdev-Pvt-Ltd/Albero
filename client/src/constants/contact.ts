@@ -22,7 +22,7 @@ export const contactData = {
     },
     link: {
         title: 'Follow us',
-        facebook: 'https://facebook.com',
+        facebook: 'https://m.facebook.com/profile.php?id=61579248144811',
         twitter: 'https://twitter.com',
         linkedin: 'https://linkedin.com',
         instagram: 'https://www.instagram.com/albero_tech/'
